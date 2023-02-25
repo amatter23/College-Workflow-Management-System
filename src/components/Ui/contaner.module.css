@@ -1,0 +1,18 @@
+.contaner_1 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.contaner_2 {
+  position: relative;
+  display: flex;
+  height: 98%;
+  width: 98%;
+}
+.contaner_3 {
+  display: flex;
+  width: fit-content;
+  padding: var(--units);
+}

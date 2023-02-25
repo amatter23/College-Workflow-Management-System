@@ -1,0 +1,7 @@
+.tasks {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: aqua;
+  flex: 2
+}
