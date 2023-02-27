@@ -7,7 +7,7 @@ import {
   faClock,
   faRightToBracket,
 } from '@fortawesome/free-solid-svg-icons';
-
+import LogoUser from '../../Ui/LogoUser';
 const Nav = props => {
   // time data
   const [dateState, setDateState] = useState(new Date());
@@ -23,7 +23,12 @@ const Nav = props => {
     <div className={classes.contaner}>
       {/* find way to get this data from back */}
       <div className={classes.name}>
-        <FontAwesomeIcon icon={faA} className={classes.navNameIcone} />
+        <div className={classes.strock}>
+        <LogoUser
+          curentRole={'Ahmed'}
+        ></LogoUser>
+        </div>
+        
         <h3>Ahmed Matter</h3>
       </div>
       <div className={classes.navData}>

@@ -1,0 +1,24 @@
+button{
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+.contaner {
+  display: flex;
+  background-color: var(--co3color);
+  border-radius: calc(var(--units) / 1.5);
+  align-items: center;
+  justify-content: center;
+}
+.faTrashIcone {
+  padding: calc(var(--units) / 2) calc(var(--units));
+}
+.contaner:hover {
+  color: var(--co3color);
+  background-color: var(--co5color);
+  cursor: pointer;
+}

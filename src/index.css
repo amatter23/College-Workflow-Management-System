@@ -13,35 +13,34 @@
   --units: 1rem;
   --time-1: 100ms;
 }
+html {
+  font-size: 16px;
+}
+@media (max-width: 1200px) {
+  html {
+    font-size: 13px;
+  }
+}
+@media (max-width: 1200px) {
+  html {
+    font-size: 11px;
+  }
+}
+@media (max-width: 900px) {
+  html {
+    font-size: 10px;
+  }
+}
+
 
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   height: 100vh;
 }
-h1,
-h2,
-p {
-  font-size: clamp(var(--min), var(--val), var(--max));
-}
-
-h1 {
-  --min: 2em;
-  --val: 4vw;
-  --max: 3em;
-}
-h2 {
-  --min: 1.5em; /* minimum value */
-  --val: 2vw; /* preferred value = 4% viewport width */
-  --max: 2.25em; /* maximum value */
-}
-h3 {
-  --min: 0.75em; /* minimum value */
-  --val: 1vw; /* preferred value = 4% viewport width */
-  --max: 1.25em; /* maximum value */
-}
-p {
-  --min: 1em;
-  --val: 2.5vw;
-  --max: 1.5em;
+ul {
+  list-style-type: none;
+  font-weight: bold;
+  font-size: 20px;
+  
 }

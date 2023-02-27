@@ -4,14 +4,15 @@ import React, { useState } from 'react';
 import AdminDate from './Data/DummyData';
 //handel contaners
 import Home from './components/Admin/Home/Home';
-
-
+import Delete from './components/Ui/Delete.js';
 
 function App(props) {
   const [data, updateDate] = useState(AdminDate);
 
   return (
-    <Home data= {data}></Home>
+    <>
+      <Home data={data}></Home>
+    </>
   );
 }
 

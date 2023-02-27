@@ -1,7 +1,8 @@
 //need to figrout how can be creat a denamic icon
 import React, { useState } from 'react';
-import classes from './tasksHome.module.css';
+import classes from './vacationsHome.module.css';
 import LogoUser from '../../Ui/LogoUser';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faArrowLeft,
@@ -12,18 +13,37 @@ import {
   faTrash,
   faD,
   faH,
+  faClock,
+  faLayerGroup,
+  faCircle,
+  faCircleCheck,
+  faCircleMinus,
+  faSpinner,
 } from '@fortawesome/free-solid-svg-icons';
 
 import Delete from '../../Ui/Delete.js';
+import { render } from '@testing-library/react';
 
-const TasksHome = props => {
+const VacationsHome = props => {
   const clickHandler = () => {};
   const deleteItem = id => {
     updateData(current => current.filter(tasks => tasks.id !== id));
   };
-  const [tasks, updateData] = useState(props.briefTasks);
-
-  const [role, updaterrole] = useState('role');
+  const [data, updateData] = useState(props.data);
+  const [status, updateStatus] = useState([
+    <FontAwesomeIcon
+      icon={faCircleCheck}
+      className={`${classes.Icone} ${classes.accepted}`}
+    />,
+    <FontAwesomeIcon
+      icon={faCircleMinus}
+      className={`${classes.Icone} ${classes.reject}`}
+    />,
+    <FontAwesomeIcon
+      icon={faSpinner}
+      className={`${classes.Icone} ${classes.pending}`}
+    />,
+  ]);
 
   return (
     <div className={classes.tasks}>
@@ -42,10 +62,6 @@ const TasksHome = props => {
       </div>
       <div className={classes.tapleOfData}>
         <div className={`${classes.rows} ${classes.first}`}>
-          <div className={`${classes.item} `}>
-            <FontAwesomeIcon icon={faList} className={classes.titleIcone} />
-            <h4>Title</h4>
-          </div>
           <div className={classes.item}>
             <FontAwesomeIcon
               icon={faArrowRight}
@@ -55,60 +71,47 @@ const TasksHome = props => {
           </div>
           <div className={classes.item}>
             <FontAwesomeIcon
-              icon={faArrowLeft}
+              icon={faLayerGroup}
               className={classes.titleIcone}
             />
-            <h4>Resever</h4>
+            <h4>Type</h4>
           </div>
           <div className={classes.item}>
-            <FontAwesomeIcon
-              icon={faArrowLeft}
-              className={classes.titleIcone}
-            />
-            <h4>Deadline</h4>
+            <FontAwesomeIcon icon={faCircle} className={classes.titleIcone} />
+            <h4>States</h4>
           </div>
           <div className={classes.item}>
             <FontAwesomeIcon icon={faTrash} className={classes.titleIcone} />
             <h4>Dealete</h4>
           </div>
         </div>
-        {tasks.length === 0 ? (
+        {data.length === 0 ? (
           <div className={classes.errorM}>No Data to Show</div>
         ) : (
-          tasks.map(task => (
-            <div
-              className={`${classes.rows} ${classes.columnContant}`}
-              onSubmit={deleteItem}
-            >
-              <div className={`${classes.item} ${classes.title} `}>
-                <h4>{task.title}</h4>
+          data.map(vec => (
+            <div className={`${classes.rows} ${classes.columnContant} `}>
+              <div
+                className={`${classes.item} ${classes.sen_res} ${classes.rowsx2}`}
+              >
+                <LogoUser curentRole={vec.sender.role}></LogoUser>
+                <h4>{vec.sender.name}</h4>
               </div>
               <div
                 className={`${classes.item} ${classes.sen_res} ${classes.rowsx2}`}
               >
-                <LogoUser curentRole={task.sender.role}></LogoUser>
-
-                <h4>{task.sender.name}</h4>
+                <h4>{vec.type}</h4>
               </div>
               <div
                 className={`${classes.item} ${classes.sen_res} ${classes.rowsx2}`}
               >
-                <LogoUser curentRole={task.resever.role}></LogoUser>
-                <h4>{task.resever.name}</h4>
+                {vec.status === 'accepted' ? status[0] : ''}
+                {vec.status === 'reject' ? status[1] : ''}
+                {vec.status === 'pending' ? status[2] : ''}
               </div>
               <div
                 className={`${classes.item} ${classes.sen_res} ${classes.rowsx2}`}
               >
-                {task.deadline.toLocaleString('en-US', {
-                  day: 'numeric',
-                  month: 'numeric',
-                  year: 'numeric',
-                })}
-              </div>
-              <div
-                className={`${classes.item} ${classes.sen_res} ${classes.rowsx2}`}
-              >
-                <Delete id={task.id} deleteItem={deleteItem}></Delete>
+                <Delete id={vec.id} deleteItem={deleteItem}></Delete>
               </div>
             </div>
           ))
@@ -118,4 +121,4 @@ const TasksHome = props => {
   );
 };
 
-export default TasksHome;
+export default VacationsHome;

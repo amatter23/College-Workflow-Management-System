@@ -6,15 +6,30 @@ import classes from '../../Ui/contaner.module.css';
 import Menu from '../Ui_admin/Menu';
 import Nav from '../Ui_admin/Nav';
 import TasksHome from './TasksHome';
-import VacationHome from './VacationHome';
+import VacationsHome from './VacationsHome';
+import UsersHomeData from './UsersHomeDate';
 import styles from '.././Home/tasksHome.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faList, faReceipt, faTasks } from '@fortawesome/free-solid-svg-icons';
+import {
+  faFile,
+  faFileInvoice,
+  faList,
+  faReceipt,
+  faTasks,
+  faArrowRight,
+  faArrowLeft,
+  faClock,
+  faTrash,
+  faLayerGroup,
+  faCircle
+} from '@fortawesome/free-solid-svg-icons';
 
 import './home.css';
 
 const Home = props => {
   const [data, updateDate] = useState(props.data);
+  
+  
   console.log(data);
   return (
     <Contaner type={classes.contaner_1}>
@@ -37,21 +52,20 @@ const Home = props => {
             }
             briefTasks={data.tasks}
           ></TasksHome>
-          <TasksHome
-            tapleName={'Tasks'}
+          <VacationsHome tapleName={'Vacattions'}
             tapleIcone={
               <FontAwesomeIcon icon={faTasks} className={styles.titleIcone} />
             }
-            briefTasks={data.tasks}
-          ></TasksHome>
-          
+            data={data.vecations}></VacationsHome>
         </Contaner>
         <Contaner
           type={classes.contaner_3}
           flex='1'
           backgroundColor={'var(--co2color)'}
           borderRadius={'0 var(--units)'}
-        ></Contaner>
+        >
+          <UsersHomeData users={data.users} roles={data.role}></UsersHomeData>
+        </Contaner>
       </Contaner>
     </Contaner>
   );

@@ -1,0 +1,13 @@
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: calc(var(--units) * 2);
+  width: calc(var(--units) * 2);
+  border-radius: 50%;
+  font-weight: 500;
+  background-color: var(--backgroundcolor);
+  font-size: calc(var(--units)*1.3);
+  color: var(--co5color);
+}
