@@ -4,15 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 const Delete = props => {
   const deleteItem = () => {
-    console.log(props.id);
     props.deleteItem(props.id);
   };
   return (
-    <button
-      type='submit'
-      className={classes.contaner}
-      onClick={deleteItem}
-    >
+    <button type='submit' className={classes.contaner} onClick={deleteItem}>
       <FontAwesomeIcon icon={faTrash} className={classes.faTrashIcone} />
     </button>
   );

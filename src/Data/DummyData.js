@@ -1,6 +1,6 @@
 const AdminDate = {
   //just open tasks
-  tasks: [
+ tasks: [
     {
       id: 1,
       title: 'need to creat a table',
@@ -197,6 +197,6 @@ const AdminDate = {
       //now i will use as a text (accepted,reject,pending)
       status: 'accepted',
     },
-  ],
+  ], 
 };
 export default AdminDate;

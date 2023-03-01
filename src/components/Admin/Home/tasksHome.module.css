@@ -42,6 +42,7 @@
   color: var(--co5color);
   justify-content: center;
   text-overflow: ellipsis;
+  
 }
 .columnContant:hover {
   background-color: var(--co3color);
@@ -86,6 +87,12 @@ h4 {
   color: var(--co5color);
   font-size: calc(var(--units) * 2);
   position: absolute;
-  bottom: 50%;
+  bottom: 20%;
   right: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.errorM .titleIcone {
+  font-size: calc(var(--units) * 5);
 }

@@ -12,6 +12,7 @@ import {
   faTrash,
   faD,
   faH,
+  faFolderOpen,
 } from '@fortawesome/free-solid-svg-icons';
 
 import Delete from '../../Ui/Delete.js';
@@ -73,7 +74,7 @@ const TasksHome = props => {
           </div>
         </div>
         {tasks.length === 0 ? (
-          <div className={classes.errorM}>No Data to Show</div>
+          <div className={classes.errorM}><span><FontAwesomeIcon icon={faFolderOpen} className={classes.titleIcone} /></span>Empty</div>
         ) : (
           tasks.map(task => (
             <div

@@ -19,6 +19,7 @@ import {
   faCircleCheck,
   faCircleMinus,
   faSpinner,
+  faFolderOpen
 } from '@fortawesome/free-solid-svg-icons';
 
 import Delete from '../../Ui/Delete.js';
@@ -86,7 +87,7 @@ const VacationsHome = props => {
           </div>
         </div>
         {data.length === 0 ? (
-          <div className={classes.errorM}>No Data to Show</div>
+          <div className={classes.errorM}><span><FontAwesomeIcon icon={faFolderOpen} className={classes.titleIcone} /></span>Empty</div>
         ) : (
           data.map(vec => (
             <div className={`${classes.rows} ${classes.columnContant} `}>
