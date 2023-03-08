@@ -5,13 +5,13 @@ import AdminDate from './Data/DummyData';
 //handel contaners
 import Home from './components/Admin/Home/Home';
 import Delete from './components/Ui/Delete.js';
-
+import Login from './components/Login/Login';
 function App(props) {
   const [data, updateDate] = useState(AdminDate);
 
   return (
     <>
-      <Home data={data}></Home>
+      
     </>
   );
 }

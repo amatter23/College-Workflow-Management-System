@@ -11,7 +11,8 @@ const Contaner = props => {
         position: props.position,
         gap: props.gap,
         borderRadius: props.borderRadius,
-        flex: props.flex
+        flex: props.flex,
+        borderRadius: props.borderRadius
       }}
     >
       {props.children}

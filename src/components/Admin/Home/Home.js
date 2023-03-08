@@ -39,10 +39,11 @@ const Home = props => {
         </Contaner>
         <Contaner
           type={classes.contaner_3}
-          flex='3'
+          flex='4'
           flexDirection='Column'
           backgroundColor={'var( --co1color)'}
-          gap='Var(--units)'
+          gap='var(--units)'
+          borderRadius = "var(--units)"
         >
           <Nav></Nav>
           <TasksHome
