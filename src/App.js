@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+//lip needed
+import React, { useState } from 'react';
+//dammy data
+import AdminDate from './Data/DummyData';
+//handel contaners
+import Home from './components/Admin/Home/Home';
+import Delete from './components/Ui/Delete.js';
+import Login from './components/Login/Login';
+import AdminRoute from './components/Admin/AdminRoute';
 
-function App() {
+import { BrowserRouter } from 'react-router-dom';
+function App(props) {
+  const [data, updateDate] = useState(AdminDate);
+
+  const updateDateFa = newData => {
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <AdminRoute 
+ updateData={updateDateFa} data={data}></AdminRoute>
+    </>
   );
 }
 

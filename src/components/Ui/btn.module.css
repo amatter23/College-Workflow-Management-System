@@ -1,0 +1,39 @@
+.btnOut {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 50%;
+  width: 100%;
+  padding: calc(var(--units) / 2) calc(var(--units));
+  border-radius: var(--units);
+  justify-content: center;
+  color: var(--backgroundcolor);
+  border: solid 1px var(--backgroundcolor);
+  font-size: calc(var(--units) );
+  transition: 600ms;
+}
+.btnOut:hover {
+  background-color: var(--co5color);
+  border: solid 1px var(--backgroundcolor);
+}
+.btnIn {
+  align-items: center;
+  position: relative;
+  display: flex;
+  width: 50%;
+  width: 100%;
+  padding: calc(var(--units) / 2) calc(var(--units));
+  border-radius: calc(var(--units) / 1.5);
+  justify-content: center;
+  color: var(--backgroundcolor);
+  background-color: var(--co5color);
+  font-size: calc(var(--units) );
+  gap: var(--units);
+}
+
+.btnIn:hover {
+  background-color: var(--co3color);
+  color: var(--co5color);
+  
+}
+

@@ -1,0 +1,5 @@
+.home{
+    background-color: var(--co1color);
+    height: 100vh;
+    border-radius: 1rem;
+}

@@ -1,0 +1,76 @@
+.contaner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: fit-content;
+  align-items: center;
+}
+/* name styles */
+.name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
+  gap: var(--units);
+}
+.name .navNameIcone {
+  font-size: calc(var(--units) * 1.5);
+  color: var(--co5color);
+  padding: calc(var(--units) / 1.5);
+  border: solid calc(var(--units) / 12) var(--co5color);
+  border-radius: calc(var(--units) * 1.5);
+}
+.name h3 {
+  color: var(--co5color);
+  font-weight: 600;
+}
+.navData {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 2;
+  gap: var(--units);
+}
+
+.clock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: calc(var(--units) / 2);
+  border-radius: var(--units);
+  background-color: var(--backgroundcolor);
+  width: fit-content;
+  color: var(--co5color);
+  gap: var(--units);
+}
+
+.icone {
+  font-size: calc(var(--units) * 1.5);
+}
+.time {
+  display: flex;
+  flex-direction: row;
+  font-size: calc(var(--units) * 1);
+  font-weight: 600;
+}
+.time * {
+  margin: 0 calc(var(--units) / 5);
+}
+.navBtn {
+  display: flex;
+  flex-direction: row;
+  gap: var(--units);
+}
+.navBtn * {
+  font-size: calc(var(--units) * 1.5);
+  color: var(--co5color);
+
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--backgroundcolor);
+}
+.hover:hover {
+  background-color: var(--co4color);
+}
