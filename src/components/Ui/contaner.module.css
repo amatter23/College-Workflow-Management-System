@@ -4,12 +4,14 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  overflow: hidden;
 }
 .contaner_2 {
   position: relative;
   display: flex;
   height: 98%;
   width: 98%;
+  overflow: hidden;
 }
 .contaner_3 {
   display: flex;

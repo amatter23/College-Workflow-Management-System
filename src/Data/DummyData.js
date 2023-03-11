@@ -1,57 +1,57 @@
 const AdminDate = {
   //just open tasks
- tasks: [
+  tasks: [
     {
-      id: 1,
+      id: 'e1',
       title: 'need to creat a table',
       sender: { role: 'dean', name: 'Ahmed Matter' },
       resever: { role: 'assistant', name: 'Ahmed Matter' },
       deadline: new Date('December 27, 1995 03:24:00'),
     },
     {
-      id: 2,
+      id: 'e2',
       title: 'need to creat a table',
       sender: { role: 'D', name: 'Ahmed Matter' },
       resever: { role: 'assistant', name: 'Ahmed Matter' },
       deadline: new Date('December 17, 1922 03:24:00'),
     },
     {
-      id: 3,
+      id: 'e3',
       title: 'need to creat a table',
       sender: { role: 'dean', name: 'Ahmed Matter' },
       resever: { role: 'assistant', name: 'Ahmed Matter' },
       deadline: new Date('December 17, 1995 03:24:00'),
     },
     {
-      id: 4,
+      id: 'e4',
       title: 'need to creat a table',
       sender: { role: 'dean', name: 'Ahmed Matter' },
       resever: { role: 'assistant', name: 'Ahmed Matter' },
       deadline: new Date('December 17, 1995 03:24:00'),
     },
     {
-      id: 5,
+      id: 'e5',
       title: 'need to creat a table',
       sender: { role: 'dean', name: 'Ahmed Matter' },
       resever: { role: 'assistant', name: 'Ahmed Matter' },
       deadline: new Date('December 17, 1995 03:24:00'),
     },
     {
-      id: 6,
+      id: 'e6',
       title: 'need to creat a table',
       sender: { role: 'dean', name: 'Ahmed Matter' },
       resever: { role: 'assistant', name: 'Ahmed Matter' },
       deadline: new Date('December 67, 6995 03:24:00'),
     },
     {
-      id: 7,
+      id: 'e7',
       title: 'need to creat a table',
       sender: { role: 'dean', name: 'Ahmed Matter' },
       resever: { role: 'assistant', name: 'Ahmed Matter' },
       deadline: new Date('December 17, 1995 03:24:00'),
     },
     {
-      id: 8,
+      id: 'e8',
       title: 'need to creat a table',
       sender: { role: 'dean', name: 'Ahmed Matter' },
       resever: { role: 'assistant', name: 'Ahmed Matter' },
@@ -68,7 +68,7 @@ const AdminDate = {
       degree: 'doctor',
     },
     {
-      id: 'e1',
+      id: 'e2',
       name: 'Ahmed matter2',
       email: 'matterahmed36@gmail.com',
       password: 'jfkhdsf',
@@ -76,7 +76,7 @@ const AdminDate = {
       degree: 'doctor',
     },
     {
-      id: 'e1',
+      id: 'e3',
       name: 'Mohamed matter3',
       email: 'matterahmed36@gmail.com',
       password: 'jfkhdsf',
@@ -84,7 +84,7 @@ const AdminDate = {
       degree: 'doctor',
     },
     {
-      id: 'e1',
+      id: 'e4',
       name: 'Hossam matte4',
       email: 'matterahmed36@gmail.com',
       password: 'jfkhdsf',
@@ -92,7 +92,7 @@ const AdminDate = {
       degree: 'doctor',
     },
     {
-      id: 'e1',
+      id: 'e5',
       name: 'Ali matter5',
       email: 'matterahmed36@gmail.com',
       password: 'jfkhdsf',
@@ -100,7 +100,7 @@ const AdminDate = {
       degree: 'doctor',
     },
     {
-      id: 'e1',
+      id: 'e6',
       name: 'Mahdy matter6',
       email: 'matterahmed36@gmail.com',
       password: 'jfkhdsf',
@@ -108,7 +108,7 @@ const AdminDate = {
       degree: 'doctor',
     },
     {
-      id: 'e1',
+      id: 'e7',
       name: 'matter7',
       email: 'matterahmed36@gmail.com',
       password: 'jfkhdsf',
@@ -137,18 +137,30 @@ const AdminDate = {
       name: 'secrtary',
       numberOfUsers: 9,
     },
+    {
+      name: 'mo',
+      numberOfUsers: 9,
+    },
+    {
+      name: 'mazz',
+      numberOfUsers: 9,
+    },
+    {
+      name: 'mtttttazz',
+      numberOfUsers: 9,
+    },
   ],
   degree: [
     {
-      name: 'dean',
+      name: 'doctor',
       numberOfUsers: 9,
     },
     {
-      name: 'dean',
+      name: 'co doctor',
       numberOfUsers: 9,
     },
     {
-      name: 'dean',
+      name: 'assistant',
       numberOfUsers: 9,
     },
     {
@@ -197,6 +209,6 @@ const AdminDate = {
       //now i will use as a text (accepted,reject,pending)
       status: 'accepted',
     },
-  ], 
+  ],
 };
 export default AdminDate;

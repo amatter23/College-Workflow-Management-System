@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import classes from './vacationsHome.module.css';
 import LogoUser from '../../Ui/LogoUser';
-
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faArrowLeft,
@@ -19,7 +19,7 @@ import {
   faCircleCheck,
   faCircleMinus,
   faSpinner,
-  faFolderOpen
+  faFolderOpen,
 } from '@fortawesome/free-solid-svg-icons';
 
 import Delete from '../../Ui/Delete.js';
@@ -50,8 +50,10 @@ const VacationsHome = props => {
     <div className={classes.tasks}>
       <div className={classes.header}>
         <div className={classes.title}>
-          {props.tapleIcone}
-          <h3>{props.tapleName}</h3>
+          <Link to={'/vacations'} className={classes.title}>
+            {props.tapleIcone}
+            <h3>{props.tapleName}</h3>
+          </Link>
         </div>
         <div>
           <FontAwesomeIcon
@@ -87,7 +89,15 @@ const VacationsHome = props => {
           </div>
         </div>
         {data.length === 0 ? (
-          <div className={classes.errorM}><span><FontAwesomeIcon icon={faFolderOpen} className={classes.titleIcone} /></span>Empty</div>
+          <div className={classes.errorM}>
+            <span>
+              <FontAwesomeIcon
+                icon={faFolderOpen}
+                className={classes.titleIcone}
+              />
+            </span>
+            Empty
+          </div>
         ) : (
           data.map(vec => (
             <div className={`${classes.rows} ${classes.columnContant} `}>

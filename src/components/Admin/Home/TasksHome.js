@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import classes from './tasksHome.module.css';
 import LogoUser from '../../Ui/LogoUser';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faArrowLeft,
@@ -30,8 +31,9 @@ const TasksHome = props => {
     <div className={classes.tasks}>
       <div className={classes.header}>
         <div className={classes.title}>
-          {props.tapleIcone}
-          <h3>{props.tapleName}</h3>
+          <Link className={classes.title} to='/tasks'>{props.tapleIcone}
+          <h3>{props.tapleName}</h3></Link>
+          
         </div>
         <div>
           <FontAwesomeIcon

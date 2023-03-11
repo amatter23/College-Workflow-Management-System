@@ -14,6 +14,7 @@ const Contaner = props => {
         flex: props.flex,
         borderRadius: props.borderRadius
       }}
+      onClick ={props.onClick}
     >
       {props.children}
     </div>

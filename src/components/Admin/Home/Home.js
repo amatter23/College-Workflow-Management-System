@@ -23,12 +23,13 @@ import {
   faLayerGroup,
   faCircle
 } from '@fortawesome/free-solid-svg-icons';
-
 import './home.css';
+
+
+
 
 const Home = props => {
   const [data, updateDate] = useState(props.data);
-  
   
   console.log(data);
   return (
