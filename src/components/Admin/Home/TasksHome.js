@@ -19,27 +19,22 @@ import {
 import Delete from '../../Ui/Delete.js';
 
 const TasksHome = props => {
-  const clickHandler = () => {};
-  const deleteItem = id => {
-    updateData(current => current.filter(tasks => tasks.id !== id));
-  };
-  const [tasks, updateData] = useState(props.briefTasks);
-
   const [role, updaterrole] = useState('role');
 
   return (
     <div className={classes.tasks}>
       <div className={classes.header}>
         <div className={classes.title}>
-          <Link className={classes.title} to='/tasks'>{props.tapleIcone}
-          <h3>{props.tapleName}</h3></Link>
-          
+          <Link className={classes.title} to='/tasks'>
+            {props.tapleIcone}
+            <h3>{props.tapleName}</h3>
+          </Link>
         </div>
         <div>
           <FontAwesomeIcon
             icon={faList}
             className={classes.titleIcone}
-            onClick={clickHandler}
+            
           />
         </div>
       </div>
@@ -61,7 +56,7 @@ const TasksHome = props => {
               icon={faArrowLeft}
               className={classes.titleIcone}
             />
-            <h4>Resever</h4>
+            <h4>receiver</h4>
           </div>
           <div className={classes.item}>
             <FontAwesomeIcon
@@ -75,14 +70,19 @@ const TasksHome = props => {
             <h4>Dealete</h4>
           </div>
         </div>
-        {tasks.length === 0 ? (
-          <div className={classes.errorM}><span><FontAwesomeIcon icon={faFolderOpen} className={classes.titleIcone} /></span>Empty</div>
+        {props.briefTasks.tasks.length === 0 ? (
+          <div className={classes.errorM}>
+            <span>
+              <FontAwesomeIcon
+                icon={faFolderOpen}
+                className={classes.titleIcone}
+              />
+            </span>
+            Empty
+          </div>
         ) : (
-          tasks.map(task => (
-            <div
-              className={`${classes.rows} ${classes.columnContant}`}
-              onSubmit={deleteItem}
-            >
+          props.briefTasks.tasks.map(task => (
+            <div className={`${classes.rows} ${classes.columnContant}`}>
               <div className={`${classes.item} ${classes.title} `}>
                 <h4>{task.title}</h4>
               </div>
@@ -96,8 +96,8 @@ const TasksHome = props => {
               <div
                 className={`${classes.item} ${classes.sen_res} ${classes.rowsx2}`}
               >
-                <LogoUser curentRole={task.resever.role}></LogoUser>
-                <h4>{task.resever.name}</h4>
+                <LogoUser curentRole={task.receiver.role}></LogoUser>
+                <h4>{task.receiver.name}</h4>
               </div>
               <div
                 className={`${classes.item} ${classes.sen_res} ${classes.rowsx2}`}
@@ -111,7 +111,7 @@ const TasksHome = props => {
               <div
                 className={`${classes.item} ${classes.sen_res} ${classes.rowsx2}`}
               >
-                <Delete id={task.id} deleteItem={deleteItem}></Delete>
+                <Delete id={task.id} deleteItem={props.deleteTask}></Delete>
               </div>
             </div>
           ))

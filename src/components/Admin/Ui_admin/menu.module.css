@@ -21,6 +21,10 @@
   gap: calc(var(--units));
   flex-direction: column;
   font-size: var(--units);
+  align-items: center; 
+}
+link{
+
 }
 
 h1 {

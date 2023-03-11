@@ -17,7 +17,7 @@ const TaskRow = props => {
 
       <div className={`${classes.item} ${classes.role}`}>
       <LogoUser curentRole = {props.task.sender.role}></LogoUser>
-        <h2>{props.task.resever.name}</h2>
+        <h2>{props.task.receiver.name}</h2>
       </div>
       <div className={`${classes.item} `}>
         <h2>{props.task.deadline.toLocaleString('en-US', {

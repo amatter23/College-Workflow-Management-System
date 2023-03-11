@@ -52,13 +52,14 @@ const Home = props => {
             tapleIcone={
               <FontAwesomeIcon icon={faTasks} className={styles.titleIcone} />
             }
-            briefTasks={data.tasks}
+            briefTasks={props.data}
+            deleteTask = {props.deleteTask}
           ></TasksHome>
           <VacationsHome tapleName={'Vacattions'}
             tapleIcone={
               <FontAwesomeIcon icon={faTasks} className={styles.titleIcone} />
             }
-            data={data.vecations}></VacationsHome>
+            data={props.data} deletevacation = {props.deletevacation}></VacationsHome>
         </Contaner>
         <Contaner
           type={classes.contaner_3}

@@ -91,7 +91,7 @@ const Tasks = props => {
                       icon={faArrowLeft}
                       className={classes.titleIcone}
                     />
-                    <h2>Resever</h2>
+                    <h2>receiver</h2>
                   </div>
                   <div className={classes.item}>
                     <FontAwesomeIcon

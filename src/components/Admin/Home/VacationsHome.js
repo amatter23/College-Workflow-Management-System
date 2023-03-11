@@ -99,7 +99,7 @@ const VacationsHome = props => {
             Empty
           </div>
         ) : (
-          data.map(vec => (
+          props.data.vacations.map(vec => (
             <div className={`${classes.rows} ${classes.columnContant} `}>
               <div
                 className={`${classes.item} ${classes.sen_res} ${classes.rowsx2}`}
@@ -116,13 +116,13 @@ const VacationsHome = props => {
                 className={`${classes.item} ${classes.sen_res} ${classes.rowsx2}`}
               >
                 {vec.status === 'accepted' ? status[0] : ''}
-                {vec.status === 'reject' ? status[1] : ''}
+                {vec.status === 'rejected' ? status[1] : ''}
                 {vec.status === 'pending' ? status[2] : ''}
               </div>
               <div
                 className={`${classes.item} ${classes.sen_res} ${classes.rowsx2}`}
               >
-                <Delete id={vec.id} deleteItem={deleteItem}></Delete>
+                <Delete id={vec.id} deleteItem={props.deletevacation}></Delete>
               </div>
             </div>
           ))
