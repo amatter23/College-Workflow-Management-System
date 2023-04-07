@@ -17,15 +17,11 @@ import {
   faTable,
   faTableColumns,
 } from '@fortawesome/free-solid-svg-icons';
-import { createBrowserRouter, Routes, Route } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { Link } from 'react-router-dom';
 
 const Menu = props => {
-  //1-clike handler to nav bar
-  // // const clickHandel = () => {
-  // //   console.log('jkfhgdshjkgfdjshgfhjksd');
-  // // };
   return (
     <Contaner
       type={styles.menu}
@@ -33,24 +29,35 @@ const Menu = props => {
       flexDirection={'column'}
     >
       <div className={styles.contener}>
-      <Link to='/'>
-      <FontAwesomeIcon icon={faTableColumns} className={styles.highlight} />
-        </Link>
-        
+        <NavLink to='/'>
+          <FontAwesomeIcon icon={faTableColumns} className={styles.highlight} />
+        </NavLink>
       </div>
       <div className={styles.contener}>
-        <Link to='/'>
+        <NavLink
+          className={({ isActive }) => (isActive ? classes.active : undefined)}
+          to='/'
+        >
           <FontAwesomeIcon icon={faHome} className={styles.highlight} />
-        </Link>
-        <Link to='/users'>
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? classes.active : undefined)}
+          to='/users'
+        >
           <FontAwesomeIcon icon={faAddressBook} className={styles.highlight} />
-        </Link>
-        <Link to='/tasks'>
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? classes.active : undefined)}
+          to='/tasks'
+        >
           <FontAwesomeIcon icon={faListCheck} className={styles.highlight} />
-        </Link>
-        <Link to='/vacations'>
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? classes.active : undefined)}
+          to='/vacations'
+        >
           <FontAwesomeIcon icon={faFileInvoice} className={styles.highlight} />
-        </Link>
+        </NavLink>
       </div>
       <div className={styles.contener}>
         <FontAwesomeIcon icon={faLightbulb} className={styles.highlight} />

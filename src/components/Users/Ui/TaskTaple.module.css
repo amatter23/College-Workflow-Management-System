@@ -1,0 +1,244 @@
+.contaner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--units);
+  border: solid 2px var(--backgroundcolor_2);
+  gap: var(--units);
+  overflow: hidden;
+}
+.haeder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: calc(var(--units) / 2) 0;
+}
+.haederItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--units);
+  color: var(--text_color_1);
+  font-weight: 600;
+  font-size: calc(var(--units));
+  position: relative;
+  padding: 0 var(--units);
+}
+.toggles {
+  gap: var(--units);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.toggle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: var(--units);
+
+  padding: 0 calc(var(--units));
+  border-radius: calc(var(--units) / 3);
+  font-size: calc(var(--units) / 1.2);
+}
+.toggle .but {
+  font-weight: 600;
+  position: relative;
+  padding: calc(var(--units) / 3) calc(var(--units) / 2);
+  transition: all 0.1s ease-in-out;
+}
+.toggle .but:hover {
+  color: var(--hoverColor);
+  transform: scale(1.05);
+}
+.toggleActive {
+  border-bottom: solid 2px var(--text_color_2);
+  color: var(--text_color_2);
+}
+.toggleActive:hover {
+  color: var(--text_color_1);
+}
+.line {
+  position: relative;
+  display: flex;
+  height: 20px;
+  width: 2px;
+  background-color: var(--text_color_2);
+}
+
+.taple {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
+}
+.tapleHeaderContaner {
+  background-color: var(--backgroundcolor_2);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(var(--units) / 1.2);
+}
+
+.tapleHeader {
+  display: grid;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 2fr 1fr 1fr;
+  padding: calc(var(--units) / 2) 0;
+  width: 90%;
+  margin: auto;
+}
+.tapleBody {
+  height: 100%;
+}
+.tapleHeaderItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--units) / 2);
+  font-size: calc(var(--units) / 1.2);
+  font-weight: 600;
+  color: var(--text_color_1);
+}
+.tapleHeaderItem:nth-child(1) {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.btnAddTask {
+  font-size: calc(var(--units) / 1.2);
+  color: var(--text_color_2);
+  padding: calc(var(--units) / 3) calc(var(--units));
+  border: solid 1px var(--text_color_2);
+  border-radius: calc(var(--units) / 2);
+  transition: 100ms ease-in-out;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.btnAddTask:hover {
+  color: var(--text_color_3);
+  background-color: var(--text_color_2);
+  transform: scale(1.05);
+}
+.tapleBodyContaner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.tapleBodyItemContaner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: solid 1px var(--backgroundcolor_2);
+  align-items: center;
+}
+
+.tapleBodyItemContaner:hover {
+  background-color: var(--backgroundcolor_2);
+}
+.tapleBodyItemContaner:hover .tapleBodyItem {
+  transform: scale(1.02);
+}
+.tapleBodyItem {
+  display: grid;
+  flex-direction: row;
+  grid-template-columns: 2fr 1fr 1fr ;
+  width: 90%;
+  margin: auto;
+  padding: calc(var(--units) / 2) 0;
+  transition: 100ms ease-in-out;
+}
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--units) / 2);
+  font-size: calc(var(--units) / 1.2);
+  font-weight: 600;
+  color: var(--text_color_1);
+}
+.item:nth-child(1) {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.iconeDeadline {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--units) / 2);
+  font-size: calc(var(--units) / 1.2);
+  font-weight: 600;
+  color: var(--color4);
+  background-color: var(--color14);
+  padding: calc(var(--units) / 3);
+  border-radius: 50%;
+}
+.iconeTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--units) / 2);
+  font-size: calc(var(--units) / 1.2);
+  font-weight: 600;
+  color: var(--color1);
+  background-color: var(--color11);
+  padding: calc(var(--units) / 3) calc(var(--units) / 2);
+  border-radius: 50%;
+  transition: 100ms ease-in-out;
+}
+.iconeTitle:hover {
+  transform: scale(1.2);
+}
+
+
+.emptyTasks{
+  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--units) / 2);
+  font-size: calc(var(--units) / 1.2);
+  font-weight: 600;
+  color: var(--text_color_1);
+  padding: calc(var(--units) / 2) 0;
+  margin: auto;
+ 
+}
+
+.iconeError{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--units) / 2);
+  font-size: calc(var(--units) / 1.2);
+  font-weight: 600;
+  color: var(--color1);
+  background-color: var(--color11);
+  padding: calc(var(--units) / 3);
+  border-radius: 50%;
+}

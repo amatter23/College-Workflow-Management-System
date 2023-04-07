@@ -11,7 +11,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  color: var(--co5color);
+  color: var(--textcolor);
 }
 .title {
   display: flex;
@@ -39,10 +39,9 @@
   display: grid;
   grid-template-columns: 25% 20% 20% 20% 13%;
   align-items: center;
-  color: var(--co5color);
+  color: var(--textcolor);
   justify-content: center;
   text-overflow: ellipsis;
-  
 }
 .columnContant:hover {
   background-color: var(--co3color);
@@ -84,7 +83,7 @@ h4 {
   font-weight: 400;
 }
 .errorM {
-  color: var(--co5color);
+  color: var(--textcolor);
   font-size: calc(var(--units) * 2);
   position: absolute;
   bottom: 20%;

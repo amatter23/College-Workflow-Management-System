@@ -2,7 +2,12 @@
 //and export it
 import React, { useState } from 'react';
 // improt main things need to creat route
-import { Route, Routes } from 'react-router-dom';
+import {
+  Route,
+  Routes,
+  createBrowserRouter,
+  RouterProvider,
+} from 'react-router-dom';
 // import all components
 import Home from './Home/Home';
 import Users from './Users/Users';
@@ -40,39 +45,50 @@ const Test = props => {
     });
     console.log(id);
   };
-  return (
-    <div>
-      <Routes>
-        <Route
-          path='/'
-          element={
-            <Home
-              data={data}
-              deleteTask={deleteTask}
-              deletevacation={deletevacation}
-            />
-          }
-        />
-        <Route
-          path='/users'
-          element={
-            <Users
-              updateDataFa={addNewUser}
-              data={data}
-              deleteUserMain={deleteUser}
-            />
-          }
-        />
-        <Route
-          path='/tasks'
-          element={<Tasks data={data} deleteTask={deleteTask} />}
-        />
-        <Route
-          path='/vacations'
-          element={<Vacation data={data} deleteVacation={deletevacation} />}
-        />
-      </Routes>
-    </div>
-  );
+
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: (
+        <div className='light'>
+          <Home
+            data={data}
+            deleteTask={deleteTask}
+            deletevacation={deletevacation}
+          />
+        </div>
+      ),
+    },
+    {
+      path: '/users',
+      element: (
+        <div className='light'>
+          <Users
+            updateDataFa={addNewUser}
+            data={data}
+            deleteUserMain={deleteUser}
+          />
+        </div>
+      ),
+    },
+    {
+      path: '/tasks',
+      element: (
+        <div className='light'>
+          <Tasks data={data} deleteTask={deleteTask} />
+        </div>
+      ),
+    },
+    {
+      path: '/vacations',
+      element: (
+        <div className='light'>
+          <Vacation data={data} deleteVacation={deletevacation} />
+        </div>
+      ),
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 };
 export default Test;
