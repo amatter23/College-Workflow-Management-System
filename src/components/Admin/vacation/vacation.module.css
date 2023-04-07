@@ -19,11 +19,11 @@
 .title h1 {
   font-size: calc(var(--units) * 1.5);
   font-weight: 500;
-  color: var(--co5color);
+  color: var(--textcolor);
 }
 .title .titleIcone {
   font-size: calc(var(--units) * 1.5);
-  color: var(--co5color);
+  color: var(--textcolor);
 }
 .btn {
   z-index: 50;
@@ -71,7 +71,7 @@
   justify-content: center;
   margin: 0 auto;
   gap: calc(var(--units));
-  color: var(--co5color);
+  color: var(--textcolor);
 
   font-size: var(--units);
 }
@@ -86,12 +86,12 @@
   justify-content: center;
   align-items: center;
   background-color: var(--co2color);
-  color: var(--co5color);
+  color: var(--textcolor);
   padding: calc(var(--units) / 3) 0;
   border-radius: calc(var(--units) / 2);
 }
 .tapleOfUsers .content .row .trash:hover {
-  background-color: var(--co5color);
+  background-color: var(--textcolor);
   color: var(--co2color);
 }
 .tapleOfUsers .content .row .item h2 {
@@ -149,7 +149,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--co5color);
+  background: var(--textcolor);
   border-radius: calc(var(--units) / 2);
 }
 

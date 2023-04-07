@@ -11,12 +11,12 @@ import {
   faLock,
   faTriangleExclamation,
 } from '@fortawesome/free-solid-svg-icons';
-
+import { fetchlogin } from '../Users/Events/auth';
 const Login = props => {
   //check if email is right
   const [rightEmail, updateRightEmail] = useState('false');
   const emailValid = event => {
-    setTimeout(() =>{
+    setTimeout(() => {
       if (
         event.target.value.includes('@') &&
         event.target.value.includes('.com')
@@ -26,27 +26,23 @@ const Login = props => {
         updateRightEmail(false);
       }
     }, 5000);
-   
   };
 
   //check if passwword is right
   const [rightPassword, updateRightPassword] = useState('false');
   const passwordValid = event => {
-    setTimeout(() =>{
+    setTimeout(() => {
       if (event.target.value.length >= 6) {
         updateRightPassword(true);
       } else {
         updateRightPassword(false);
       }
     }, 3000);
-    
   };
 
-  const submitForm = () => {
-    if(rightEmail === true && rightPassword === true) {
-      // need to create a function to validate and send the data to backend server
-      console.log('done')
-    }
+  const submitForm = event => {
+    fetchlogin(event.target[0].value, event.target[1].value);
+   
   };
   return (
     <div className={classes.contaner}>
@@ -62,7 +58,7 @@ const Login = props => {
           <div className={classes.formEmail}>
             <form onSubmit={submitForm}>
               <div className={classes.fild}>
-                <input type='email' id='email' required onChange={emailValid} />
+                <input type='text' id='email' required onChange={emailValid} />
                 <label for='email' style={{}}>
                   <FontAwesomeIcon icon={faEnvelope} /> Email
                 </label>

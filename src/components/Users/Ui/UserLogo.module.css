@@ -1,0 +1,21 @@
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: calc(var(--units) * 1.5);
+  width: calc(var(--units) * 1.5);
+  border-radius: 50%;
+  font-weight: 500;
+  background-color: var(--backgroundcolor_1);
+  font-size: calc(var(--units) *1);
+  color: var(--text_color_2);
+  border: 1px solid var(--textcolor);
+  border-radius: var(--units);
+  cursor: default;
+  transition: all 0.1s ease-in-out;
+}
+.logo:hover {
+  scale: 1.1;
+  
+}

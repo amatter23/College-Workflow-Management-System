@@ -21,23 +21,22 @@
   gap: calc(var(--units));
   flex-direction: column;
   font-size: var(--units);
-  align-items: center; 
-}
-link{
-
+  align-items: center;
 }
 
 h1 {
-  color: red;
   margin: calc(var(--units) / 2);
-  font-size: calc(var(--units) * 2.5);
 }
 .highlight {
   font-size: calc(var(--units) * 1.8);
   color: var(--backgroundcolor);
   margin: calc(var(--units) / 1.5);
 }
-.highlight:hover {
+.highlight:hover,
+.highlight:active {
   color: var(--co6color);
   transition: var(--time-1);
+}
+.active {
+  color: crimson;
 }

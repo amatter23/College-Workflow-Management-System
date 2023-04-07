@@ -1,0 +1,108 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--backgroundcolor_1);
+  /* padding: var(--units) calc(var(--units) * 2); */
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  /* gap: var(--units); */
+  padding: calc(var(--units) * 2);
+  border-radius: var(--units);
+}
+.title {
+  font-size: calc(var(--units) / 1.5);
+  font-weight: bold;
+  color: var(--text_color_1);
+}
+.title span {
+  color: var(--text_color_2);
+}
+.statics {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: calc(var(--units) * 2);
+}
+.item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: calc(var(--units) / 4) calc(var(--units));
+
+  color: var(--color2);
+  border-radius: var(--units);
+}
+.item:nth-child(2) {
+  
+  color: var(--color1);
+}
+.icone {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: var(--units);
+}
+.icone h2 {
+  font-size: calc(var(--units) / 2);
+  font-weight: 400;
+  color: var(--text_color_1);
+}
+.item h1 {
+  font-size: calc(var(--units));
+  font-weight: 400;
+}
+.foter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  border-top: solid 1px var(--backgroundcolor_2);
+  padding-top: var(--units);
+  gap: calc(var(--units) * 2);
+}
+.name {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.name h1 {
+  font-size: calc(var(--units));
+  font-weight: 800;
+  color: var(--text_color_2);
+  margin: 0;
+}
+.name h2 {
+  font-size: calc(var(--units) / 2);
+  font-weight: 400;
+  color: var(--text_color_1);
+  margin: 0;
+}
+.edit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+.edit  {
+  font-size: calc(var(--units)/1.2);
+  COlor: var(--text_color_2);
+  cursor: pointer;
+
+  transition: all 0.3s ease-in-out;
+  border: solid 1px var(--backgroundcolor_2);
+  padding: calc(var(--units)/4) var(--units);
+  border-radius: var(--units);
+}
+.edit:hover {
+  background-color: var(--text_color_2);
+  color: var(--text_color_3);
+  scale: 1.1;
+}

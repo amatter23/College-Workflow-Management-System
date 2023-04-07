@@ -1,0 +1,85 @@
+Date : 2023-03-11 20:23:51
+Directory : f:\A.matter\WebD\react\workflow-management\src
+Total : 45 files,  3626 codes, 64 comments, 211 blanks, all 3901 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |         25 |      2,183 |         48 |        119 |      2,350 |
+| CSS        |         16 |      1,306 |         16 |         89 |      1,411 |
+| XML        |          4 |        137 |          0 |          3 |        140 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                           | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                              |         45 |      3,626 |         64 |        211 |      3,901 |
+| . (Files)                                                                                      |          9 |        123 |         10 |         24 |        157 |
+| Data                                                                                           |          1 |        656 |          1 |          1 |        658 |
+| components                                                                                     |         35 |      2,847 |         53 |        186 |      3,086 |
+| components\Admin                                                                               |         22 |      2,254 |         50 |        148 |      2,452 |
+| components\Admin (Files)                                                                       |          1 |         70 |          6 |          3 |         79 |
+| components\Admin\Home                                                                          |          8 |        690 |          4 |         32 |        726 |
+| components\Admin\Ui_admin                                                                      |          4 |        222 |         15 |         16 |        253 |
+| components\Admin\Users                                                                         |          3 |        667 |         14 |         37 |        718 |
+| components\Admin\tasks                                                                         |          3 |        279 |          5 |         31 |        315 |
+| components\Admin\vacation                                                                      |          3 |        326 |          6 |         29 |        361 |
+| components\Login                                                                               |          5 |        424 |          3 |         21 |        448 |
+| components\Login (Files)                                                                       |          2 |        288 |          3 |         18 |        309 |
+| components\Login\Assits                                                                        |          3 |        136 |          0 |          3 |        139 |
+| components\Ui                                                                                  |          8 |        169 |          0 |         17 |        186 |
++------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                       | language   | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| f:\A.matter\WebD\react\workflow-management\src\App.css                                         | CSS        |          3 |          0 |          1 |          4 |
+| f:\A.matter\WebD\react\workflow-management\src\App.js                                          | JavaScript |         19 |          3 |          5 |         27 |
+| f:\A.matter\WebD\react\workflow-management\src\App.test.js                                     | JavaScript |          7 |          0 |          2 |          9 |
+| f:\A.matter\WebD\react\workflow-management\src\Data\DummyData.js                               | JavaScript |        656 |          1 |          1 |        658 |
+| f:\A.matter\WebD\react\workflow-management\src\Test.js                                         | JavaScript |         14 |          0 |          3 |         17 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Admin\AdminRoute.js                  | JavaScript |         70 |          6 |          3 |         79 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Admin\Home\Home.js                   | JavaScript |         69 |          2 |          6 |         77 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Admin\Home\TasksHome.js              | JavaScript |        117 |          1 |          7 |        125 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Admin\Home\UsersHomeDate.js          | JavaScript |         60 |          0 |          7 |         67 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Admin\Home\VacationsHome.js          | JavaScript |        130 |          1 |          5 |        136 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Admin\Home\home.css                  | CSS        |          5 |          0 |          0 |          5 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Admin\Home\tasksHome.module.css      | CSS        |         96 |          0 |          3 |         99 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Admin\Home\usersHomeData.module.css  | CSS        |        106 |          0 |          2 |        108 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Admin\Home\vacationsHome.module.css  | CSS        |        107 |          0 |          2 |        109 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Admin\Ui_admin\Menu.js               | JavaScript |         55 |          4 |          4 |         63 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Admin\Ui_admin\Nav.js                | JavaScript |         60 |          4 |          5 |         69 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Admin\Ui_admin\Nav.module.css        | CSS        |         72 |          1 |          4 |         77 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Admin\Ui_admin\menu.module.css       | CSS        |         35 |          6 |          3 |         44 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Admin\Users\UserRow.js               | JavaScript |         61 |          3 |         10 |         74 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Admin\Users\Users.js                 | JavaScript |        303 |          8 |          5 |        316 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Admin\Users\users.module.css         | CSS        |        303 |          3 |         22 |        328 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Admin\tasks\TaskRow.js               | JavaScript |         41 |          0 |          4 |         45 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Admin\tasks\Tasks.js                 | JavaScript |        119 |          2 |          7 |        128 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Admin\tasks\tasks.module.css         | CSS        |        119 |          3 |         20 |        142 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Admin\vacation\Vacation.js           | JavaScript |        110 |          2 |          9 |        121 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Admin\vacation\VacationRow.js        | JavaScript |         72 |          1 |          7 |         80 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Admin\vacation\vacation.module.css   | CSS        |        144 |          3 |         13 |        160 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Login\Assits\Group.svg               | XML        |         12 |          0 |          1 |         13 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Login\Assits\ai-intelligence 1.svg   | XML        |        103 |          0 |          1 |        104 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Login\Assits\bullseye-gradient 1.svg | XML        |         21 |          0 |          1 |         22 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Login\Login.js                       | JavaScript |        123 |          3 |          9 |        135 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Login\login.module.css               | CSS        |        165 |          0 |          9 |        174 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Ui\Btn.js                            | JavaScript |         21 |          0 |          2 |         23 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Ui\Contaner.js                       | JavaScript |         23 |          0 |          2 |         25 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Ui\Delete.js                         | JavaScript |         15 |          0 |          2 |         17 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Ui\LogoUser.js                       | JavaScript |         10 |          0 |          5 |         15 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Ui\LogoUser.module.css               | CSS        |         20 |          0 |          0 |         20 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Ui\btn.module.css                    | CSS        |         36 |          0 |          4 |         40 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Ui\contaner.module.css               | CSS        |         20 |          0 |          1 |         21 |
+| f:\A.matter\WebD\react\workflow-management\src\components\Ui\delete.module.css                 | CSS        |         24 |          0 |          1 |         25 |
+| f:\A.matter\WebD\react\workflow-management\src\index.css                                       | CSS        |         51 |          0 |          4 |         55 |
+| f:\A.matter\WebD\react\workflow-management\src\index.js                                        | JavaScript |         15 |          3 |          6 |         24 |
+| f:\A.matter\WebD\react\workflow-management\src\logo.svg                                        | XML        |          1 |          0 |          0 |          1 |
+| f:\A.matter\WebD\react\workflow-management\src\reportWebVitals.js                              | JavaScript |         12 |          0 |          2 |         14 |
+| f:\A.matter\WebD\react\workflow-management\src\setupTests.js                                   | JavaScript |          1 |          4 |          1 |          6 |
+| Total                                                                                          |            |      3,626 |         64 |        211 |      3,901 |
++------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

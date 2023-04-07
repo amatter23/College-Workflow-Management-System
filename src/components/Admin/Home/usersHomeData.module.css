@@ -19,11 +19,11 @@
   align-items: center;
   gap: var(--units);
   position: relative;
-  color: var(--co5color);
+  color: var(--textcolor);
   font-size: var(--units);
 }
 .icone {
-  color: var(--co5color);
+  color: var(--textcolor);
   font-size: calc(var(--units) * 1.4);
 }
 .list {
@@ -33,9 +33,9 @@
   background-color: var(--co3color);
   flex-direction: column;
   padding: 0;
-  color: var(--co5color);
+  color: var(--textcolor);
   border-radius: var(--units);
-  border: solid 1px var(--co5color);
+  border: solid 1px var(--textcolor);
   overflow: hidden;
   transition: all 0.6s cubic-bezier(0.6, 0.05, 0.4, 1);
 }
@@ -43,18 +43,18 @@
   display: flex;
   flex-direction: row;
   gap: var(--units);
-  border-bottom: solid 1px var(--co5color);
+  border-bottom: solid 1px var(--textcolor);
   padding: calc(var(--units) / 2) var(--units);
   font-size: var(--units);
   align-items: center;
 }
 .role:hover {
   cursor: pointer;
-  background-color: var(--co5color);
+  background-color: var(--textcolor);
   color: var(--backgroundcolor);
 }
-.role:hover .logo{
-  color: var(--co5color);
+.role:hover .logo {
+  color: var(--textcolor);
 }
 .logo {
   display: flex;
@@ -85,20 +85,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: calc(var(--units) /4);
+  gap: calc(var(--units) / 4);
   padding: var(--units) 0;
   border-radius: var(--units);
-  color: var(--co5color);
+  color: var(--textcolor);
 }
 .user h2 {
   text-align: center;
-  height: calc(var(--units)*2);
+  height: calc(var(--units) * 2);
   overflow: hidden;
   text-overflow: clip;
   font-weight: 600;
-  font-size: calc(var(--units)*1.3);
+  font-size: calc(var(--units) * 1.3);
 }
-.user:hover{
+.user:hover {
   background-color: var(--co3color);
 }
 h2,

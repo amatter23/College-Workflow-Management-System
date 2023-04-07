@@ -1,0 +1,32 @@
+permissions{
+  tasks{
+    add task
+    submit task
+    accept response task
+    see all tasks
+    see tasks add{
+      done 
+      not done
+    }
+    see tasks reserve{
+      done 
+      not done
+    }
+  }
+  vacations{
+    add vacation
+    accept or reject vacation
+    see vacation request Not accepted
+    see your vacation accepted
+  }
+}
+
+
+actions
+
+add task 
+submit task
+accept response task
+see all tasks
+add vecation
+accept or reject vacation

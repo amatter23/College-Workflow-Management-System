@@ -16,13 +16,13 @@
 }
 .name .navNameIcone {
   font-size: calc(var(--units) * 1.5);
-  color: var(--co5color);
+  color: var(--textcolor);
   padding: calc(var(--units) / 1.5);
-  border: solid calc(var(--units) / 12) var(--co5color);
+  border: solid calc(var(--units) / 12) var(--textcolor);
   border-radius: calc(var(--units) * 1.5);
 }
 .name h3 {
-  color: var(--co5color);
+  color: var(--textcolor);
   font-weight: 600;
 }
 .navData {
@@ -42,7 +42,7 @@
   border-radius: var(--units);
   background-color: var(--backgroundcolor);
   width: fit-content;
-  color: var(--co5color);
+  color: var(--textcolor);
   gap: var(--units);
 }
 
@@ -65,7 +65,7 @@
 }
 .navBtn * {
   font-size: calc(var(--units) * 1.5);
-  color: var(--co5color);
+  color: var(--textcolor);
 
   padding: 1rem;
   border-radius: 1rem;
