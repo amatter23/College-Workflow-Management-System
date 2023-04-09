@@ -10,7 +10,7 @@ import {
   faTriangleExclamation,
 } from '@fortawesome/free-solid-svg-icons';
 
-import { getTasks, getUserData } from '../Events/getMainData';
+import { getTasks, getUserData, getTasksFilltred } from '../Events/getMainData';
 import AddTask from './AddTask';
 import { NavLink, useNavigate } from 'react-router-dom';
 const TaskTaple = props => {
@@ -166,6 +166,7 @@ const TaskTaple = props => {
   const [taskOrder, updateTaskOrder] = useState(
     toggleState.taskRole[0].taskOrder
   );
+  const [taskStatus, updateTaskStatus] = useState(false);
   // change task status on click on open or done btn and change the style of the btn
   const changeTaskStatus = event => {
     updateTaskStatus(!taskStatus);
@@ -175,16 +176,13 @@ const TaskTaple = props => {
       .getElementById(event.target.id)
       .classList.add(`${classes.toggleActive}`);
   };
-  const [taskStatus, updateTaskStatus] = useState(false);
 
   // get tasks on user role change and on task status change
   useEffect(() => {
-    getTasks(taskOrder).then(data => {
-      updateTasks(data.results.filter(item => item.status === taskStatus));
+    getTasksFilltred(taskOrder, taskStatus).then(data => {
+      updateTasks(data.results);
     });
   }, [taskOrder, taskStatus]);
-
- 
 
   //calculate time remaining to task
   const calculateTimeRemaining = date1 => {
@@ -203,13 +201,12 @@ const TaskTaple = props => {
     return diffDays + ' days';
   };
 
-
   // open task details window on click on task
   const navigate = useNavigate();
   const openTaskWindow = event => {
     event.preventDefault();
     navigate('/TaskDetails', {
-      state: { taskOrder: `${taskOrder}`, taskId: `${event.currentTarget.id}`},
+      state: { taskOrder: `${taskOrder}`, taskId: `${event.currentTarget.id}` },
     });
   };
 
@@ -285,7 +282,7 @@ const TaskTaple = props => {
         <div className={classes.tapleBodyContaner}>
           {tasks.length === 0 ? (
             <h1 className={classes.emptyTasks}>
-              Sorry no tasks available{' '}
+              Sorry no tasks available
               <FontAwesomeIcon
                 className={classes.iconeError}
                 icon={faTriangleExclamation}
