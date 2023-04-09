@@ -15,7 +15,7 @@ import AddTask from './AddTask';
 import { NavLink, useNavigate } from 'react-router-dom';
 const TaskTaple = props => {
   //user defined data
-  const [userData, updateDate] = useState({});
+  const [userData, updateDate] = useState(props.userData);
 
   //toggle state change on user role change
   const [toggleState, updateToggleState] = useState({
@@ -25,10 +25,10 @@ const TaskTaple = props => {
         // name of the toggle
         name: 'Assigned',
         // task order of the toggle
-        taskOrder: '/sent-tasks',
+        taskOrder: '/sent-tasks/',
         updateTaskOrderf: function (event) {
           // update the state with the new task order of role
-          updateTaskOrder('/sent-tasks');
+          updateTaskOrder('/sent-tasks/');
           document
             // change he hover style when btn is clicked
             .getElementById('Assigned')
@@ -43,9 +43,9 @@ const TaskTaple = props => {
       },
       {
         name: 'Received',
-        taskOrder: '/received-tasks',
+        taskOrder: '/received-tasks/',
         updateTaskOrderf: function (event) {
-          updateTaskOrder('/received-tasks');
+          updateTaskOrder('/received-tasks/');
           document
             .getElementById('Assigned')
             .classList.remove(`${classes.toggleActive}`);
@@ -66,9 +66,9 @@ const TaskTaple = props => {
         taskRole: [
           {
             name: 'Assigned',
-            taskOrder: '/sent-tasks',
+            taskOrder: '/sent-tasks/',
             updateTaskOrderf: function (event) {
-              updateTaskOrder('/sent-tasks');
+              updateTaskOrder('/sent-tasks/');
               document
                 .getElementById('Assigned')
                 .classList.remove(`${classes.toggleActive}`);
@@ -87,9 +87,9 @@ const TaskTaple = props => {
         taskRole: [
           {
             name: 'Assigned',
-            taskOrder: '/sent-tasks',
+            taskOrder: '/sent-tasks/',
             updateTaskOrderf: function (event) {
-              updateTaskOrder('/sent-tasks');
+              updateTaskOrder('/sent-tasks/');
               document
                 .getElementById('Assigned')
                 .classList.remove(`${classes.toggleActive}`);
@@ -103,7 +103,7 @@ const TaskTaple = props => {
           },
           {
             name: 'Received',
-            taskOrder: '/received-tasks',
+            taskOrder: '/received-tasks/',
             updateTaskOrderf: function (event) {
               updateTaskOrder('/received-tasks');
               document
@@ -124,9 +124,9 @@ const TaskTaple = props => {
         taskRole: [
           {
             name: 'Received',
-            taskOrder: '/received-tasks',
+            taskOrder: '/received-tasks/',
             updateTaskOrderf: function (event) {
-              updateTaskOrder('/received-tasks');
+              updateTaskOrder('/received-tasks/');
               document
                 .getElementById('Assigned')
                 .classList.remove(`${classes.toggleActive}`);
@@ -143,15 +143,15 @@ const TaskTaple = props => {
     }
 
     //*!  error handling need to configure why tasks component is not rendering when pass a user data from app not
-    getUserData().then(data => {
-      updateDate({
-        full_name: data.staff.user,
-        first_name: data.first_name,
-        role: data.staff.role,
-        id: data.id,
-        title: data.staff.title,
-      });
-    });
+    // getUserData().then(data => {
+    //   updateDate({
+    //     full_name: data.staff.user,
+    //     first_name: data.first_name,
+    //     role: data.staff.role,
+    //     id: data.id,
+    //     title: data.staff.title,
+    //   });
+    // });
   }, []);
 
   // toggle state change on user role change
@@ -180,14 +180,11 @@ const TaskTaple = props => {
   // get tasks on user role change and on task status change
   useEffect(() => {
     getTasks(taskOrder).then(data => {
-      updateTasks(data.filter(item => item.status === taskStatus));
+      updateTasks(data.results.filter(item => item.status === taskStatus));
     });
   }, [taskOrder, taskStatus]);
 
-  // open add task modal on click on add task button
-  // const openAddTaskModal = () => {
-  //   props.openAddTaskModal();
-  // };
+ 
 
   //calculate time remaining to task
   const calculateTimeRemaining = date1 => {
@@ -206,18 +203,13 @@ const TaskTaple = props => {
     return diffDays + ' days';
   };
 
-  // const openTaskWindow = () => {
-  //   console.log('open task window');
-  //   return <NavLink to={`/TaskDetails`}></NavLink>;
-  // };
-
 
   // open task details window on click on task
   const navigate = useNavigate();
   const openTaskWindow = event => {
     event.preventDefault();
     navigate('/TaskDetails', {
-      state: { taskOrder: `${taskOrder}`, taskId: `${event.currentTarget.id}` },
+      state: { taskOrder: `${taskOrder}`, taskId: `${event.currentTarget.id}`},
     });
   };
 

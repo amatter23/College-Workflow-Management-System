@@ -63,8 +63,32 @@ export function createTask(
   // })
 }
 
+export function addResponsee(
+  responseTitle,
+  responseDescription,
+  responseFile,
+  taskId
+) {
+  return fetch(api_url + '/tasks-responses/', {
+    method: 'POST',
+    body: JSON.stringify({
+      title: responseTitle,
+      description: responseDescription,
+      file: responseFile,
+      task: taskId,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+      Authorization: auth,
+    },
+  })
+    .then(response => response.json())
+    .then(data => {
+      return data;
+    });
+}
 // update a task details
-export function updateTask(taskId, taskDeadline,taskStatus,taskReceiver) {
+export function updateTask(taskId, taskDeadline, taskStatus, taskReceiver) {
   return fetch(api_url + '/sent-tasks/' + taskId + '/', {
     method: 'PUT',
     body: JSON.stringify({
@@ -84,8 +108,8 @@ export function updateTask(taskId, taskDeadline,taskStatus,taskReceiver) {
     });
 }
 // get task information
-export function getTask(taskId) {
-  return fetch(api_url + '/sent-tasks/' + taskId, {
+export function getTask(taskId, taskOrder) {
+  return fetch(api_url + taskOrder + '/' + taskId, {
     headers: {
       Authorization: auth,
     },
@@ -109,7 +133,7 @@ export function getTaskRes(taskId) {
 
 // get list of receivers
 export function getReceivers() {
-  return fetch(api_url + '/receivers', {
+  return fetch(api_url + '/receivers/', {
     headers: {
       Authorization: auth,
     },

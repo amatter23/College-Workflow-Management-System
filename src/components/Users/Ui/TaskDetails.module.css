@@ -87,7 +87,7 @@
   width: 100%;
   margin: auto;
   gap: calc(var(--units) * 2);
-  height: 50%;
+  height: 60%;
 }
 .taskRes h3 {
   color: var(--text_color_1);
@@ -98,14 +98,14 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  gap: calc(var(--units) * 2);
+  gap: calc(var(--units));
 }
 .taskRes form .taskResDes {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
-  gap: calc(var(--units) * 2);
+  height: 35%;
+  gap: calc(var(--units));
   justify-content: flex-start;
   align-items: flex-start;
 }
@@ -155,11 +155,27 @@
 .taskResFile {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 80%;
   height: 100%;
   gap: calc(var(--units));
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
+}
+
+.taskResDes input[type='text'] {
+  border: none;
+
+  background-color: var(--text_color_3);
+  padding: calc(var(--units) / 2) calc(var(--units));
+  border-radius: calc(var(--units) / 2);
+  cursor: pointer;
+  margin-right: var(--units);
+  transition: all 0.3s ease;
+  width: 100%;
+  box-shadow: rgba(150, 149, 149, 0.16) 0px 1px 4px;
+}
+.taskResDes input[type='text']::focus {
+  border: solid 1px var(--text_color_2);
 }
 .taskResFile input[type='file'] {
   color: var(--text_color_1);
@@ -309,7 +325,7 @@
 .attributes .item h2 {
   width: fit-content;
   font-size: calc(var(--units) / 1.1);
-  padding: calc(var(--units) / 3) calc(var(--units) );
+  padding: calc(var(--units) / 3) calc(var(--units));
   background-color: var(--color12);
   border-radius: calc(var(--units) / 2);
   color: var(--color2);
@@ -396,7 +412,7 @@
   flex-direction: row;
   align-items: center;
   gap: calc(var(--units) / 2);
-  
+
   padding: calc(var(--units) / 4) calc(var(--units) / 2);
   border-radius: calc(var(--units) / 2);
   color: var(--color4);
@@ -404,8 +420,24 @@
   transition: all 0.3s ease;
   background-color: var(--color14);
 }
-.dowBtn:hover{
+.dowBtn:hover {
   background-color: var(--backgroundcolor_1);
   color: var(--color4);
   scale: 1.1;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.title h5 {
+  font-size: calc(var(--units) / 1.1);
+  font-weight: 600;
+  color: var(--text_color_2);
+  padding: calc(var(--units)) calc(var(--units));
+  text-align: left;
+  text-overflow: ellipsis;
 }

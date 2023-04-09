@@ -21,7 +21,6 @@ export function checkAuth() {
 }
 
 export function fetchlogin(email, password) {
-  console.log('Fetch login');
   return fetch('http://127.0.0.1:8000/login/', {
     method: 'POST',
     headers: {

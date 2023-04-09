@@ -8,7 +8,7 @@ import classes from './TasksUser.module.css';
 const Tasks = props => {
   return (
     <div className={classes.con}>
-      <TaskTaple></TaskTaple>
+      <TaskTaple userData={props.userData}></TaskTaple>
     </div>
   );
 };

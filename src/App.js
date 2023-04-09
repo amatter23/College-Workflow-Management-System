@@ -21,6 +21,7 @@ import TasksUser from './components/Users/Pages/TasksUser';
 import Vacation from './components/Admin/vacation/Vacation';
 import TaskDetails from './components/Users/Ui/TaskDetails';
 import TaskDetailsTest from './components/Users/Ui/TaskDetails';
+import TaskOptions from './components/Users/Ui/TaskOptions';
 import { checkAuth } from './components/Users/Events/auth';
 import { getUserData } from './components/Users/Events/getMainData';
 import {
@@ -31,20 +32,31 @@ import {
 
 function App(props) {
   const [data, updateDate] = useState(AdminDate);
-
+  const [isLoading, setIsLoading] = useState(true);
+  // Initial fetch of data
   //user Data
   const [userData, updateUserData] = useState({});
   // get data of user when app is created
-  useEffect(() => {
-    getUserData().then(data => {
-      updateUserData({
-        full_name: data.staff.user,
-        first_name: data.first_name,
-        role: data.staff.role,
-        id: data.id,
-        title: data.staff.title,
+
+  const fetchData = async () => {
+    try {
+      const response = await getUserData().then(data => {
+        updateUserData({
+          full_name: data.staff.user,
+          first_name: data.first_name,
+          role: data.staff.role,
+          id: data.id,
+          title: data.staff.title,
+        });
       });
-    });
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchData();
   }, []);
 
   const routerUser = createBrowserRouter([
@@ -74,16 +86,27 @@ function App(props) {
         },
         {
           path: `/TaskDetails`,
-          element: <TaskDetails/>,
+          element: <TaskDetails />,
+          loader: checkAuth,
+        },
+        {
+          path: `/TaskOptions`,
+          element: <TaskOptions />,
           loader: checkAuth,
         },
       ],
     },
   ]);
-  return userData.role === 'admin' ? (
-    <AdminRoute data={data} />
-  ) : (
-    <RouterProvider router={routerUser} />
+  return (
+    <>
+      {isLoading ? (
+        <h1>loading</h1>
+      ) : userData.role === 'admin' ? (
+        <AdminRoute data={data} />
+      ) : (
+        <RouterProvider router={routerUser} />
+      )}
+    </>
   );
 }
 

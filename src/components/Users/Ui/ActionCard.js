@@ -3,8 +3,10 @@
 import React, { useState } from 'react';
 import classes from './ActionCard.module.css';
 import AddTask from './AddTask';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const ActionCard = props => {
+  const navigate = useNavigate();
   //! collor handling
   const actions = [
     {
@@ -12,9 +14,8 @@ const ActionCard = props => {
       title: 'Add new Task',
       btn: 'Add Now',
       color: 1,
-      setBackgroundColor: 'var(--color1)',
-      addTasknpm: () => {
-        return <AddTask></AddTask>;
+      fun: () => {
+        navigate('/addTask', {});
       },
     },
     {
@@ -23,7 +24,7 @@ const ActionCard = props => {
       btn: 'Add Now',
       color: 2,
       fun: () => {
-        <AddTask></AddTask>;
+        navigate('/tasks', {});
       },
     },
     {
@@ -32,7 +33,7 @@ const ActionCard = props => {
       btn: 'Take a action',
       color: 3,
       fun: () => {
-        <AddTask></AddTask>;
+        navigate('/tasks', {});
       },
     },
     {
@@ -49,7 +50,7 @@ const ActionCard = props => {
       title: 'Edit task',
       btn: 'Edit',
       color: 1,
-      fun: () => {
+      fun: function () {
         <AddTask></AddTask>;
       },
     },
@@ -82,7 +83,9 @@ const ActionCard = props => {
     setColor1(`var(--color1${actions[props.ac].color})`);
     setbtnColor('var(--text_color_2)');
   };
-
+  const test = () => {
+    console.log('test');
+  };
   //! card action handling
   const [action, setAction] = useState('add');
 
@@ -101,7 +104,9 @@ const ActionCard = props => {
         <h1>{actions[props.ac].title}</h1>
       </div>
       <div className={`${classes.item} ${classes.third}`}>
-        <button style={{ color: btnColor }}>{actions[props.ac].btn}</button>
+        <button onClick={actions[props.ac].fun} style={{ color: btnColor }}>
+          {actions[props.ac].btn}
+        </button>
       </div>
       <div
         style={{ backgroundColor: backgroundColor }}
