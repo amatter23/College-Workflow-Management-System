@@ -422,67 +422,76 @@ const TaskDetailsTest = props => {
                   <p>{taskData.description}</p>
                 </div>
               </div>
-              <div className={classes.taskRes}>
-                <div className={classes.title}>
-                  <h3>Task Response</h3>
+              {taskData.status ? (
+                <div className={classes.taskRes}>
+                  <h3>Task Response...</h3>
+                  <h3>
+                    don't worry Task is done don't need a response
+                  </h3>
                 </div>
+              ) : (
+                <div className={classes.taskRes}>
+                  <div className={classes.title}>
+                    <h3>Task Response...</h3>
+                  </div>
 
-                <form onSubmit={addResponse}>
-                  <div className={classes.taskResDes}>
-                    <label htmlFor='description'>
-                      <span>
-                        <FontAwesomeIcon
-                          onClick={props.openAddTaskModal}
-                          className={classes.icone}
-                          icon={faFileLines}
-                        />
-                      </span>{' '}
-                      Title
-                    </label>
-                    <input id='title' type='text' />
-                  </div>
-                  <div className={classes.taskResDes}>
-                    <label htmlFor='description'>
-                      <span>
-                        <FontAwesomeIcon
-                          onClick={props.openAddTaskModal}
-                          className={classes.icone}
-                          icon={faFileLines}
-                        />
-                      </span>{' '}
-                      Description
-                    </label>
-                    <textarea
-                      autoFocus
-                      id='description'
-                      cols='30'
-                      rows='10'
-                    ></textarea>
-                  </div>
-                  <div className={classes.bottomn}>
-                    <div
-                      style={{ flexDirection: 'row' }}
-                      className={classes.taskResFile}
-                    >
-                      <label htmlFor='file'>
+                  <form onSubmit={addResponse}>
+                    <div className={classes.taskResDes}>
+                      <label htmlFor='description'>
                         <span>
                           <FontAwesomeIcon
                             onClick={props.openAddTaskModal}
                             className={classes.icone}
-                            icon={faPaperclip}
+                            icon={faFileLines}
                           />
                         </span>{' '}
-                        Attachment
+                        Title
                       </label>
-                      {/* <input value={taskData.file} type='file' /> */}
-                      <input id='file' type='file' />
+                      <input id='title' type='text' />
                     </div>
-                    <button>
-                      Add Response <FontAwesomeIcon icon={faReply} />
-                    </button>
-                  </div>
-                </form>
-              </div>
+                    <div className={classes.taskResDes}>
+                      <label htmlFor='description'>
+                        <span>
+                          <FontAwesomeIcon
+                            onClick={props.openAddTaskModal}
+                            className={classes.icone}
+                            icon={faFileLines}
+                          />
+                        </span>{' '}
+                        Description
+                      </label>
+                      <textarea
+                        autoFocus
+                        id='description'
+                        cols='30'
+                        rows='10'
+                      ></textarea>
+                    </div>
+                    <div className={classes.bottomn}>
+                      <div
+                        style={{ flexDirection: 'row' }}
+                        className={classes.taskResFile}
+                      >
+                        <label htmlFor='file'>
+                          <span>
+                            <FontAwesomeIcon
+                              onClick={props.openAddTaskModal}
+                              className={classes.icone}
+                              icon={faPaperclip}
+                            />
+                          </span>{' '}
+                          Attachment
+                        </label>
+                        {/* <input value={taskData.file} type='file' /> */}
+                        <input id='file' type='file' />
+                      </div>
+                      <button>
+                        Add Response <FontAwesomeIcon icon={faReply} />
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              )}
             </div>
           </div>
           <div className={classes.right}>
