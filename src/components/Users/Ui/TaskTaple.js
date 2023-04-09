@@ -25,10 +25,10 @@ const TaskTaple = props => {
         // name of the toggle
         name: 'Assigned',
         // task order of the toggle
-        taskOrder: '/sent-tasks/',
+        taskOrder: '/sent-tasks',
         updateTaskOrderf: function (event) {
           // update the state with the new task order of role
-          updateTaskOrder('/sent-tasks/');
+          updateTaskOrder('/sent-tasks');
           document
             // change he hover style when btn is clicked
             .getElementById('Assigned')
@@ -43,9 +43,9 @@ const TaskTaple = props => {
       },
       {
         name: 'Received',
-        taskOrder: '/received-tasks/',
+        taskOrder: '/received-tasks',
         updateTaskOrderf: function (event) {
-          updateTaskOrder('/received-tasks/');
+          updateTaskOrder('/received-tasks');
           document
             .getElementById('Assigned')
             .classList.remove(`${classes.toggleActive}`);
@@ -66,9 +66,9 @@ const TaskTaple = props => {
         taskRole: [
           {
             name: 'Assigned',
-            taskOrder: '/sent-tasks/',
+            taskOrder: '/sent-tasks',
             updateTaskOrderf: function (event) {
-              updateTaskOrder('/sent-tasks/');
+              updateTaskOrder('/sent-tasks');
               document
                 .getElementById('Assigned')
                 .classList.remove(`${classes.toggleActive}`);
@@ -87,9 +87,9 @@ const TaskTaple = props => {
         taskRole: [
           {
             name: 'Assigned',
-            taskOrder: '/sent-tasks/',
+            taskOrder: '/sent-tasks',
             updateTaskOrderf: function (event) {
-              updateTaskOrder('/sent-tasks/');
+              updateTaskOrder('/sent-tasks');
               document
                 .getElementById('Assigned')
                 .classList.remove(`${classes.toggleActive}`);
@@ -103,7 +103,7 @@ const TaskTaple = props => {
           },
           {
             name: 'Received',
-            taskOrder: '/received-tasks/',
+            taskOrder: '/received-tasks',
             updateTaskOrderf: function (event) {
               updateTaskOrder('/received-tasks');
               document
@@ -124,9 +124,9 @@ const TaskTaple = props => {
         taskRole: [
           {
             name: 'Received',
-            taskOrder: '/received-tasks/',
+            taskOrder: '/received-tasks',
             updateTaskOrderf: function (event) {
-              updateTaskOrder('/received-tasks/');
+              updateTaskOrder('/received-tasks');
               document
                 .getElementById('Assigned')
                 .classList.remove(`${classes.toggleActive}`);

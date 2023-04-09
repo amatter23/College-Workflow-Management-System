@@ -41,11 +41,10 @@ const TaskDetailsTest = props => {
   const fetchData = async () => {
     try {
       const response = await getTask(taskId, taskOrder);
+      console.log(taskOrder);
       setTaskData(response);
       setIsLoading(false);
-      console.log('Task');
       console.log(taskOrder);
-      console.log(taskData);
     } catch (error) {
       console.log(error);
       setIsLoading(false);
