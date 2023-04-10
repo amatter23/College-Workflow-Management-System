@@ -22,6 +22,7 @@ import Vacation from './components/Admin/vacation/Vacation';
 import TaskDetails from './components/Users/Ui/TaskDetails';
 import TaskDetailsTest from './components/Users/Ui/TaskDetails';
 import TaskOptions from './components/Users/Ui/TaskOptions';
+import UserInformation from './components/Users/Pages/UserInformation';
 import { checkAuth } from './components/Users/Events/auth';
 import { getUserData } from './components/Users/Events/getMainData';
 import {
@@ -44,9 +45,11 @@ function App(props) {
         updateUserData({
           full_name: data.staff.user,
           first_name: data.first_name,
+          last_name: data.last_name,
           role: data.staff.role,
           id: data.id,
           title: data.staff.title,
+          email: data.email,
         });
       });
       setIsLoading(false);
@@ -92,6 +95,11 @@ function App(props) {
         {
           path: `/TaskOptions`,
           element: <TaskOptions />,
+          loader: checkAuth,
+        },
+        {
+          path: `/UserAccount`,
+          element: <UserInformation userData={userData} />,
           loader: checkAuth,
         },
       ],

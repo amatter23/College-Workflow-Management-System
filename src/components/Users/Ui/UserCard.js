@@ -39,7 +39,7 @@ const UserCard = props => {
       </div> */}
       <div className={classes.foter}>
         <div className={classes.edit}>
-        <NavLink to='/userInformation' >Edit user information</NavLink>
+        <NavLink to='/UserAccount' >Edit user information</NavLink>
         </div>
       </div>
     </div>

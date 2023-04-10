@@ -1,0 +1,173 @@
+.contaner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 70%;
+  margin: auto;
+  border-radius: calc(var(--units) / 2);
+  gap: var(--units);
+  overflow: hidden;
+  position: relative;
+  background-color: var(--backgroundcolor_2);
+  padding: calc(var(--units));
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.userTitle {
+  display: flex;
+  flex-direction: row;
+  gap: var(--units);
+  padding: var(--units);
+  color: var(--text_color_1);
+  border-radius: var(--units);
+  width: 50%;
+  align-items: center;
+  justify-content: space-between;
+}
+.nameTitle {
+  display: flex;
+  flex-direction: row;
+  gap: var(--units);
+  align-items: center;
+}
+.btn {
+  width: 50%;
+  padding: var(--units);
+  align-items: center;
+  margin: auto;
+}
+.btn button {
+  color: var(--text_color_1);
+  border: solid 1px var(--text_color_1);
+  border-radius: calc(var(--units) / 2);
+  padding: calc(var(--units) / 4) calc(var(--units));
+}
+.btn button:hover {
+  color: var(--text_color_3);
+  border-radius: calc(var(--units) / 2);
+  background-color: var(--text_color_1);
+  transition: all 200ms ease-in-out;
+  scale: 1.05;
+}
+.icon {
+  color: var(--text_color_2);
+  border: 1px solid var(--text_color_2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: calc(var(--units) / 2);
+  border-radius: calc(var(--units) / 2);
+}
+
+.userData {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--units);
+}
+.userData form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--units);
+  padding: var(--units);
+
+  border-radius: var(--units);
+}
+/* .userData form > div {
+  border-image: #0000 8;
+  -webkit-mask: conic-gradient(
+        from 180deg at top 8px right 8px,
+        #0000 90deg,
+        #000 0
+      )
+      var(--_i, 200%) 0 /200% var(--_i, 8px) border-box no-repeat,
+    conic-gradient(at bottom 8px left 8px, #0000 90deg, #000 0) 0
+      var(--_i, 200%) / var(--_i, 8px) 200% border-box no-repeat,
+    linear-gradient(#000 0 0) padding-box no-repeat;
+  transition: 0.6s, -webkit-mask-position 0.6s 0.6s;
+
+  padding: var(--units);
+  align-items: center;
+  margin: auto;
+}
+.userData form > div:hover {
+  --_i: 100%;
+  transition: 0.6s, -webkit-mask-size 0.6s 0.6s;
+} */
+.name,
+.staff {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.item {
+  width: 50%;
+  padding: var(--units);
+  align-items: center;
+  margin: auto;
+  border-bottom: solid 1px var(--text_color_1);
+  gap: var(--units);
+}
+.nameDiv {
+  display: flex;
+  flex-direction: row;
+  gap: var(--units);
+  align-items: center;
+}
+form {
+  color: var(--text_color_1);
+  width: 100%;
+}
+form input {
+  display: flex;
+  text-align: center;
+  padding: calc(var(--units) / 2) calc(var(--units) / 2);
+  border-radius: calc(var(--units) / 2);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+form .name label {
+  width: 50%;
+  background-color: var(--color11);
+  padding: calc(var(--units) / 2) calc(var(--units));
+  color: var(--color1);
+  border-radius: calc(var(--units) / 2);
+
+  text-align: center;
+}
+form .name input:focus {
+  border: solid 1px var(--color1);
+}
+form .email {
+  display: flex;
+  flex-direction: row;
+  gap: calc(var(--units));
+  margin: auto;
+}
+form .email input {
+  width: 100%;
+}
+form .email label {
+  background-color: var(--color13);
+  padding: calc(var(--units) / 2) calc(var(--units));
+  color: var(--color3);
+  border-radius: calc(var(--units) / 2);
+}
+form .staff {
+  display: flex;
+  flex-direction: row;
+}
+form .staff label {
+  background-color: var(--color14);
+  padding: calc(var(--units) / 2) calc(var(--units));
+  color: var(--color4);
+  border-radius: calc(var(--units) / 2);
+}
+.staffDiv {
+  display: flex;
+  flex-direction: row;
+  gap: calc(var(--units));
+}

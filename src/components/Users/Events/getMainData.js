@@ -156,3 +156,22 @@ export function getReceivers() {
       return data;
     });
 }
+
+export function updateUserData(firstName, lastName, email) {
+  return fetch(api_url + '/auth/users/me/', {
+    method: 'PUT',
+    body: JSON.stringify({
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+      Authorization: auth,
+    },
+  })
+    .then(response => response.json())
+    .then(data => {
+      return data;
+    });
+}
