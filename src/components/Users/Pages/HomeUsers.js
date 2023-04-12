@@ -48,7 +48,6 @@ const HomeUsers = props => {
     }
   };
 
-  
   // open add task component
   const [addTask, updateAddTask] = useState(false);
   const openAddTaskModal = () => {
@@ -60,9 +59,7 @@ const HomeUsers = props => {
       <div
         style={{ display: addTask ? 'flex' : 'none' }}
         className={classes.addUser_Contaner}
-      >
-        <AddTask openAddTaskModal={openAddTaskModal} id={2}></AddTask>
-      </div>
+      ></div>
 
       <div className={classes.topPartContaner}>
         <div className={classes.topPart}>

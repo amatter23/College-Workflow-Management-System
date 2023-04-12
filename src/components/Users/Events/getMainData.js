@@ -132,17 +132,6 @@ export function getTask(taskId, taskOrder) {
       return data;
     });
 }
-export function getTaskRes(taskId) {
-  return fetch(api_url + '/sent-tasks/' + taskId, {
-    headers: {
-      Authorization: auth,
-    },
-  })
-    .then(response => response.json())
-    .then(data => {
-      return data;
-    });
-}
 
 // get list of receivers
 export function getReceivers() {
@@ -170,6 +159,21 @@ export function updateUserData(firstName, lastName, email) {
       Authorization: auth,
     },
   })
+    .then(response => response.json())
+    .then(data => {
+      return data;
+    });
+}
+
+export function searchTasks(taskOrder, searchValue) {
+  return fetch(
+    api_url + taskOrder + '?search=' + searchValue,
+    {
+      headers: {
+        Authorization: auth,
+      },
+    }
+  )
     .then(response => response.json())
     .then(data => {
       return data;

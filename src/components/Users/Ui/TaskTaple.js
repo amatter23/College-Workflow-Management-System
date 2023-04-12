@@ -8,9 +8,10 @@ import {
   faClock,
   faFileAlt,
   faTriangleExclamation,
+  faSearch,
 } from '@fortawesome/free-solid-svg-icons';
 
-import { getTasks, getUserData, getTasksFilltred } from '../Events/getMainData';
+import { getTasksFilltred, searchTasks } from '../Events/getMainData';
 import AddTask from './AddTask';
 import { NavLink, useNavigate } from 'react-router-dom';
 const TaskTaple = props => {
@@ -59,7 +60,32 @@ const TaskTaple = props => {
       },
     ],
   });
+
+  // toggle state change on user role change
+  const [buttonToggle, updatebuttonToggle] = useState(
+    toggleState.taskRole[0].name
+  );
+
+  // state to store tasks
+  const [tasks, updateTasks] = useState([]);
+
+  // change taskOrder on user role change
+  const [taskOrder, updateTaskOrder] = useState(
+    toggleState.taskRole[0].taskOrder
+  );
+  const [taskStatus, updateTaskStatus] = useState(false);
+  // change task status on click on open or done btn and change the style of the btn
+  const changeTaskStatus = event => {
+    updateTaskStatus(!taskStatus);
+    document.getElementById('open').classList.remove(`${classes.toggleActive}`);
+    document.getElementById('done').classList.remove(`${classes.toggleActive}`);
+    document
+      .getElementById(event.target.id)
+      .classList.add(`${classes.toggleActive}`);
+  };
+
   // useeffect to change when compnat is rendered cahanege the toggle state
+  // get tasks on user role change and on task status change
   useEffect(() => {
     if (userData.role === 'dean') {
       updateToggleState({
@@ -141,44 +167,8 @@ const TaskTaple = props => {
         ],
       });
     }
-
-    //*!  error handling need to configure why tasks component is not rendering when pass a user data from app not
-    // getUserData().then(data => {
-    //   updateDate({
-    //     full_name: data.staff.user,
-    //     first_name: data.first_name,
-    //     role: data.staff.role,
-    //     id: data.id,
-    //     title: data.staff.title,
-    //   });
-    // });
-  }, []);
-
-  // toggle state change on user role change
-  const [buttonToggle, updatebuttonToggle] = useState(
-    toggleState.taskRole[0].name
-  );
-
-  // state to store tasks
-  const [tasks, updateTasks] = useState([]);
-
-  // change taskOrder on user role change
-  const [taskOrder, updateTaskOrder] = useState(
-    toggleState.taskRole[0].taskOrder
-  );
-  const [taskStatus, updateTaskStatus] = useState(false);
-  // change task status on click on open or done btn and change the style of the btn
-  const changeTaskStatus = event => {
-    updateTaskStatus(!taskStatus);
-    document.getElementById('open').classList.remove(`${classes.toggleActive}`);
-    document.getElementById('done').classList.remove(`${classes.toggleActive}`);
-    document
-      .getElementById(event.target.id)
-      .classList.add(`${classes.toggleActive}`);
-  };
-
-  // get tasks on user role change and on task status change
-  useEffect(() => {
+    // remove serach value on use and toggle
+    document.getElementById('search').value = '';
     getTasksFilltred(taskOrder, taskStatus).then(data => {
       updateTasks(data.results);
     });
@@ -199,6 +189,16 @@ const TaskTaple = props => {
       return 'Expired';
     }
     return diffDays + ' days';
+  };
+
+  // search for task by title
+
+  // *! tdodo: search returns tasks without filterd by task status
+  const searchTask = event => {
+    const searchValue = event.target.value;
+    searchTasks(taskOrder, searchValue).then(data => {
+      updateTasks(data.results);
+    });
   };
 
   // open task details window on click on task
@@ -256,6 +256,18 @@ const TaskTaple = props => {
           </div>
           <div className={classes.btnAddTask}>
             <NavLink to='/addTask'>Add Task</NavLink>
+          </div>
+            {/* // *! tdodo: search style  */}
+
+          <div className={classes.search}>
+            <input
+            id = 'search'
+              className={classes.searchInput}
+              type='text'
+              placeholder='Search'
+              onChange={searchTask}
+            />
+            <FontAwesomeIcon className={classes.searchIcon} icon={faSearch} />
           </div>
         </div>
       </div>
