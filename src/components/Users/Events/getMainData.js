@@ -165,10 +165,17 @@ export function updateUserData(firstName, lastName, email) {
     });
 }
 
-export function searchTasks(taskOrder, searchValue) {
+export function searchTasks(taskOrder, searchValue, taskStatus) {
   return fetch(
-    api_url + taskOrder + '?search=' + searchValue,
+    api_url +
+      taskOrder +
+      '/' +
+      '?status=' +
+      taskStatus +
+      '&search=' +
+      searchValue,
     {
+      method: 'GET',
       headers: {
         Authorization: auth,
       },

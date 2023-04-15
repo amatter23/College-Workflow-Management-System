@@ -73,7 +73,7 @@ const TaskTaple = props => {
   const [taskOrder, updateTaskOrder] = useState(
     toggleState.taskRole[0].taskOrder
   );
-  const [taskStatus, updateTaskStatus] = useState(false);
+  const [taskStatus,updateTaskStatus] = useState(false);
   // change task status on click on open or done btn and change the style of the btn
   const changeTaskStatus = event => {
     updateTaskStatus(!taskStatus);
@@ -193,10 +193,10 @@ const TaskTaple = props => {
 
   // search for task by title
 
-  // *! tdodo: search returns tasks without filterd by task status
+  
   const searchTask = event => {
     const searchValue = event.target.value;
-    searchTasks(taskOrder, searchValue).then(data => {
+    searchTasks(taskOrder, searchValue, taskStatus).then(data => {
       updateTasks(data.results);
     });
   };

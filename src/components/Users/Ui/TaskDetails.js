@@ -351,11 +351,11 @@ const TaskDetailsTest = props => {
                   <label htmlFor='date'>Due Date</label>
                   <input
                     id='date'
-                    value={taskData.deadline}
+                    defaultValue={taskData.deadline}
                     type='Date'
-                    // onChange={e => {
-                    //   setBtnEdit(true);
-                    // }}
+                    onChange={e => {
+                      setBtnEdit(true);
+                    }}
                   />
                 </div>
                 <div className={classes.item}>
@@ -386,8 +386,7 @@ const TaskDetailsTest = props => {
                     </div>
                   </div>
                 </div>
-                {/* {btnEdit ? <button onClick={editTask}>Edit</button> : ''} */}
-
+                {btnEdit ? <button onClick={editTask}>Edit</button> : ''}
                 {taskData.status ? (
                   ''
                 ) : (
@@ -425,9 +424,7 @@ const TaskDetailsTest = props => {
               {taskData.status ? (
                 <div className={classes.taskRes}>
                   <h3>Task Response...</h3>
-                  <h3>
-                    don't worry Task is done don't need a response
-                  </h3>
+                  <h3>don't worry Task is done don't need a response</h3>
                 </div>
               ) : (
                 <div className={classes.taskRes}>

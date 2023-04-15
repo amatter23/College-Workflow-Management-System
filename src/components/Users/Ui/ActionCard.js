@@ -83,12 +83,9 @@ const ActionCard = props => {
     setColor1(`var(--color1${actions[props.ac].color})`);
     setbtnColor('var(--text_color_2)');
   };
-  const test = () => {
-    console.log('test');
-  };
-  //! card action handling
-  const [action, setAction] = useState('add');
+  //* done
 
+  
   return (
     <div
       className={classes.actionCard}
