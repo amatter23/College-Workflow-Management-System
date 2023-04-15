@@ -1,7 +1,7 @@
 import { redirect } from 'react-router-dom';
 
 import { getAuthToken } from './auth';
-const api_url = 'http://127.0.0.1:8000'; // API URL
+const api_url = 'https://web-production-c1b7.up.railway.app'; // API URL
 const auth = 'Bearer ' + getAuthToken();
 
 // det user data

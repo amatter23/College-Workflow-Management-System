@@ -28,7 +28,7 @@ export function loginPageRedirect() {
 }
 
 export function fetchlogin(userName, password) {
-  return fetch('http://127.0.0.1:8000/login/', {
+  return fetch('https://web-production-c1b7.up.railway.app/login/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -55,7 +55,6 @@ export function logout() {
   removeAuthToken();
   window.location.reload();
 }
-
 
 // *! todo: handel token expire
 // *! todo: login errors
