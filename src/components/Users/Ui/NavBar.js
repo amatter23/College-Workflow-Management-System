@@ -11,10 +11,15 @@ import {
   faClock,
   faFileAlt,
   faBriefcase,
+  faArrowRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
 import UserLogo from './UserLogo';
+import { checkAuth, loginPageRedirect, logout } from '../Events/auth';
 
 const NavBar = props => {
+  const logoutBut = () => {
+    logout();
+  };
   return (
     <div className={classes.contaner}>
       <div className={classes.nav}>
@@ -67,6 +72,11 @@ const NavBar = props => {
               </h2>
             </div>
           </div>
+          <FontAwesomeIcon
+            onClick={logoutBut}
+            icon={faArrowRightFromBracket}
+            className={`${classes.icon}`}
+          />
         </div>
       </div>
     </div>

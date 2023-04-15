@@ -23,7 +23,7 @@ import TaskDetails from './components/Users/Ui/TaskDetails';
 import TaskDetailsTest from './components/Users/Ui/TaskDetails';
 import TaskOptions from './components/Users/Ui/TaskOptions';
 import UserInformation from './components/Users/Pages/UserInformation';
-import { checkAuth } from './components/Users/Events/auth';
+import { checkAuth, loginPageRedirect } from './components/Users/Events/auth';
 import { getUserData } from './components/Users/Events/getMainData';
 import {
   BrowserRouter,
@@ -81,6 +81,7 @@ function App(props) {
         {
           path: '/auth',
           element: <Login />,
+          loader: loginPageRedirect,
         },
         {
           path: '/addTask',

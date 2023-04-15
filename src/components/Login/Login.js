@@ -12,42 +12,20 @@ import {
   faTriangleExclamation,
 } from '@fortawesome/free-solid-svg-icons';
 import { fetchlogin } from '../Users/Events/auth';
+import { NavLink, useNavigate } from 'react-router-dom';
+
 const Login = props => {
   //check if email is right
-  const [rightEmail, updateRightEmail] = useState('false');
-  const emailValid = event => {
-    setTimeout(() => {
-      if (
-        event.target.value.includes('@') &&
-        event.target.value.includes('.com')
-      ) {
-        updateRightEmail(true);
-      } else {
-        updateRightEmail(false);
-      }
-    }, 5000);
-  };
 
   //check if passwword is right
-  const [rightPassword, updateRightPassword] = useState('false');
-  const passwordValid = event => {
-    setTimeout(() => {
-      if (event.target.value.length >= 6) {
-        updateRightPassword(true);
-      } else {
-        updateRightPassword(false);
-      }
-    }, 3000);
-  };
-
+  const navigate = useNavigate();
   const submitForm = event => {
+    event.preventDefault();
     fetchlogin(event.target[0].value, event.target[1].value);
-   
   };
   return (
     <div className={classes.contaner}>
       <div className={classes.left}>
-        <img src={leftImg} alt='' />
         <div className={classes.leftContaner}>
           <div className={classes.title}>
             <h1>
@@ -58,11 +36,11 @@ const Login = props => {
           <div className={classes.formEmail}>
             <form onSubmit={submitForm}>
               <div className={classes.fild}>
-                <input type='text' id='email' required onChange={emailValid} />
-                <label for='email' style={{}}>
-                  <FontAwesomeIcon icon={faEnvelope} /> Email
+                <input type='text' id='username' required />
+                <label for='username' style={{}}>
+                  <FontAwesomeIcon icon={faEnvelope} /> User Name
                 </label>
-                <div className={classes.errorMessage}>
+                {/* <div className={classes.errorMessage}>
                   {rightEmail ? (
                     ''
                   ) : (
@@ -74,24 +52,19 @@ const Login = props => {
                       Please enter a right email address
                     </div>
                   )}
-                </div>
+                </div> */}
               </div>
 
               <div className={classes.fild}>
-                <input
-                  type='password'
-                  id='password'
-                  required
-                  onChange={passwordValid}
-                />
+                <input type='password' id='password' required />
                 <label for='password'>
                   <FontAwesomeIcon
                     icon={faLock}
                     className={classes.iconeAnimate}
-                  />{' '}
+                  />
                   Password
                 </label>
-                <div className={classes.errorMessage}>
+                {/* <div className={classes.errorMessage}>
                   {rightPassword ? (
                     ''
                   ) : (
@@ -103,20 +76,24 @@ const Login = props => {
                       Please enter a right Password
                     </div>
                   )}
-                </div>
+                </div> */}
               </div>
 
-              <Btn title='Login' type='submit' class={style.btnOut}></Btn>
+              <button title='Login' type='submit'>
+                Login
+              </button>
             </form>
           </div>
         </div>
       </div>
       <div className={classes.right}>
-        <img src={rightImg} alt='' />
         <div className={classes.rightContaner}>
           <div className={classes.title}>
-            <h2>Work faster</h2>
-            <h1>So you can do more</h1>
+            <h2>Collaborate better, </h2>
+            <h1>
+              work smarter with{' '}
+              <span style={{ color: 'var(--text_color_2)' }}>us.</span>
+            </h1>
           </div>
           <div className={classes.img}>
             <img src={rightImg_bic} alt='' />

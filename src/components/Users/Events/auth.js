@@ -19,22 +19,30 @@ export function checkAuth() {
     return redirect('/auth');
   }
 }
+export function loginPageRedirect() {
+  if (localStorage.getItem('token')) {
+    return redirect('/');
+  } else {
+    return true;
+  }
+}
 
-export function fetchlogin(email, password) {
+export function fetchlogin(userName, password) {
   return fetch('http://127.0.0.1:8000/login/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      username: email,
+      username: userName,
       password: password,
     }),
   }).then(res => {
     if (res.status === 200) {
       return res.json().then(data => {
         setAuthToken(data.access_token);
-        redirect('/');
+        window.location.reload();
+
         return true;
       });
     } else {
@@ -45,4 +53,9 @@ export function fetchlogin(email, password) {
 
 export function logout() {
   removeAuthToken();
+  window.location.reload();
 }
+
+
+// *! todo: handel token expire
+// *! todo: login errors
