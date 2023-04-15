@@ -70,8 +70,8 @@ const HomeUsers = props => {
         </div>
       </div>
       <div className={classes.bottomPart}>
-        <TaskTaple userData={userData}></TaskTaple>
-        <TaskTaple userData={userData}></TaskTaple>
+        <TaskTaple searchView={0} userData={userData}></TaskTaple>
+        <TaskTaple searchView={0} userData={userData}></TaskTaple>
       </div>
     </div>
   );

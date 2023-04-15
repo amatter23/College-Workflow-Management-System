@@ -73,7 +73,7 @@ const TaskTaple = props => {
   const [taskOrder, updateTaskOrder] = useState(
     toggleState.taskRole[0].taskOrder
   );
-  const [taskStatus,updateTaskStatus] = useState(false);
+  const [taskStatus, updateTaskStatus] = useState(false);
   // change task status on click on open or done btn and change the style of the btn
   const changeTaskStatus = event => {
     updateTaskStatus(!taskStatus);
@@ -168,7 +168,10 @@ const TaskTaple = props => {
       });
     }
     // remove serach value on use and toggle
-    document.getElementById('search').value = '';
+    if (document.getElementById('search')) {
+      document.getElementById('search').value = '';
+    }
+
     getTasksFilltred(taskOrder, taskStatus).then(data => {
       updateTasks(data.results);
     });
@@ -192,8 +195,8 @@ const TaskTaple = props => {
   };
 
   // search for task by title
-
-  
+  // state to determine if search view is open or not (0/1)
+  const [searchView, updateSearchView] = useState(props.searchView);
   const searchTask = event => {
     const searchValue = event.target.value;
     searchTasks(taskOrder, searchValue, taskStatus).then(data => {
@@ -257,18 +260,21 @@ const TaskTaple = props => {
           <div className={classes.btnAddTask}>
             <NavLink to='/addTask'>Add Task</NavLink>
           </div>
-            {/* // *! tdodo: search style  */}
-
-          <div className={classes.search}>
-            <input
-            id = 'search'
-              className={classes.searchInput}
-              type='text'
-              placeholder='Search'
-              onChange={searchTask}
-            />
-            <FontAwesomeIcon className={classes.searchIcon} icon={faSearch} />
-          </div>
+          {/* // *! tdodo: search style  */}
+          {searchView === 1 ? (
+            <div className={classes.search}>
+              <input
+                id='search'
+                className={classes.searchInput}
+                type='text'
+                placeholder='Search'
+                onChange={searchTask}
+              />
+              <FontAwesomeIcon className={classes.searchIcon} icon={faSearch} />
+            </div>
+          ) : (
+            ''
+          )}
         </div>
       </div>
       <div className={classes.taple}>
