@@ -1,4 +1,3 @@
-
 // *! create a vaaction route
 
 import React from 'react';
@@ -59,24 +58,28 @@ const NavBar = props => {
           </div>
         </div>
         <div className={classes.right}>
-          <div className={classes.name}>
-            <UserLogo role={props.userData.role} />
-            <div>
-              <h1>
-                {`${props.userData.full_name}`.charAt(0).toUpperCase() +
-                  `${props.userData.full_name}`.slice(1)}
-              </h1>
-              <h2>
-                {`${props.userData.role}`.charAt(0).toUpperCase() +
-                  `${props.userData.role}`.slice(1)}
-              </h2>
-            </div>
-          </div>
-          <FontAwesomeIcon
-            onClick={logoutBut}
-            icon={faArrowRightFromBracket}
-            className={`${classes.icon}`}
-          />
+          {localStorage.getItem('token') ? (
+            <>
+              <div className={classes.name}>
+                <UserLogo role={props.userData.role} />
+                <div>
+                  <h1>
+                    {`${props.userData.full_name}`.charAt(0).toUpperCase() +
+                      `${props.userData.full_name}`.slice(1)}
+                  </h1>
+                  <h2>
+                    {`${props.userData.role}`.charAt(0).toUpperCase() +
+                      `${props.userData.role}`.slice(1)}
+                  </h2>
+                </div>
+              </div>
+              <FontAwesomeIcon
+                onClick={logoutBut}
+                icon={faArrowRightFromBracket}
+                className={`${classes.icon}`}
+              />
+            </>
+          ) : null}
         </div>
       </div>
     </div>

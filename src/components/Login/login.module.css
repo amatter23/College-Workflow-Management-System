@@ -11,7 +11,7 @@ input {
 }
 .left {
   display: flex;
-  width: 40%;
+  width: 50%;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -115,7 +115,7 @@ input {
 
 .right {
   display: flex;
-  width: 60%;
+  width: 50%;
   align-items: center;
   justify-content: center;
   position: relative;
