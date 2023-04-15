@@ -38,7 +38,7 @@ const HomeUsers = props => {
           <ActionCard ac={3}></ActionCard>
         </>
       );
-    } else if (userData.role === 'doctor' || userData.role === 'assistant') {
+    } else if (userData.role === 'dr' || userData.role === 'ta') {
       return (
         <>
           <ActionCard ac={1}></ActionCard>

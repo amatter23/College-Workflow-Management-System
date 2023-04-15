@@ -145,7 +145,7 @@ const TaskTaple = props => {
           },
         ],
       });
-    } else if (userData.role === 'doctor' || userData.role === 'assistant') {
+    } else if (userData.role === 'dr' || userData.role === 'ta') {
       updateToggleState({
         taskRole: [
           {
