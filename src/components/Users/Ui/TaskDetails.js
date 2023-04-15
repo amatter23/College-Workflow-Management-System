@@ -192,7 +192,14 @@ const TaskDetailsTest = props => {
                 <div className={classes.item}>
                   <label htmlFor=''>Attachment </label>
                   {/* <input value={taskData.file} type='file' /> */}
-                  <a className={classes.dowBtn} href={taskData.file} download>
+                  <a
+                    className={classes.dowBtn}
+                    href={
+                      'https://web-production-c1b7.up.railway.app' +
+                      taskData.file
+                    }
+                    download
+                  >
                     Download{' '}
                     <FontAwesomeIcon
                       onClick={props.openAddTaskModal}
@@ -361,7 +368,14 @@ const TaskDetailsTest = props => {
                 <div className={classes.item}>
                   <label htmlFor=''>Attachment </label>
                   {/* <input value={taskData.file} type='file' /> */}
-                  <a className={classes.dowBtn} href={taskData.file} download>
+                  <a
+                    className={classes.dowBtn}
+                    href={
+                      'https://web-production-c1b7.up.railway.app' +
+                      taskData.file
+                    }
+                    download
+                  >
                     Download
                     <FontAwesomeIcon
                       onClick={props.openAddTaskModal}
