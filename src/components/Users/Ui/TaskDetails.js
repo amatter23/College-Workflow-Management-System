@@ -17,7 +17,12 @@ import {
   faSquareCheck,
   faReply,
 } from '@fortawesome/free-solid-svg-icons';
-import { getTask, updateTask, addResponsee } from '../Events/getMainData';
+import {
+  getTask,
+  updateTask,
+  addResponsee,
+  api_url,
+} from '../Events/getMainData';
 const TaskDetailsTest = props => {
   // this componant need taskOrder to know this task sendet or resved
   // and task id to get task data
@@ -194,10 +199,7 @@ const TaskDetailsTest = props => {
                   {/* <input value={taskData.file} type='file' /> */}
                   <a
                     className={classes.dowBtn}
-                    href={
-                      'https://web-production-c1b7.up.railway.app' +
-                      taskData.file
-                    }
+                    href={api_url + taskData.file}
                     download
                   >
                     Download{' '}
@@ -370,10 +372,7 @@ const TaskDetailsTest = props => {
                   {/* <input value={taskData.file} type='file' /> */}
                   <a
                     className={classes.dowBtn}
-                    href={
-                      'https://web-production-c1b7.up.railway.app' +
-                      taskData.file
-                    }
+                    href={api_url + taskData.file}
                     download
                   >
                     Download

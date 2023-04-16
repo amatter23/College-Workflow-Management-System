@@ -28,7 +28,7 @@ export function loginPageRedirect() {
 }
 
 export function fetchlogin(userName, password) {
-  return fetch('https://web-production-c1b7.up.railway.app/login/', {
+  return fetch('https://tms-production.up.railway.app/login/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
