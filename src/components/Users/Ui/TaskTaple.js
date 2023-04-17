@@ -4,11 +4,13 @@ import UserLogo from './UserLogo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTrash,
-  faEye,
+  faEyee,
   faClock,
   faFileAlt,
   faTriangleExclamation,
   faSearch,
+  faForward,
+  faBackward,
 } from '@fortawesome/free-solid-svg-icons';
 
 import { getTasksFilltred, searchTasks } from '../Events/getMainData';
@@ -68,6 +70,12 @@ const TaskTaple = props => {
 
   // state to store tasks
   const [tasks, updateTasks] = useState([]);
+
+  // pagination handler state
+  const [tasksNumber, updateTasksNumber] = useState();
+  const [pageNext, updatePageNext] = useState(null);
+  const [pagePrevious, updatePagePrevious] = useState(null);
+  const [pageUrl, updatePageUrl] = useState(null);
 
   // change taskOrder on user role change
   const [taskOrder, updateTaskOrder] = useState(
@@ -172,10 +180,13 @@ const TaskTaple = props => {
       document.getElementById('search').value = '';
     }
 
-    getTasksFilltred(taskOrder, taskStatus).then(data => {
+    getTasksFilltred(taskOrder, taskStatus, pageUrl).then(data => {
+      updatePageNext(data.next);
+      updatePagePrevious(data.previous);
       updateTasks(data.results);
+      updateTasksNumber(data.count);
     });
-  }, [taskOrder, taskStatus]);
+  }, [taskOrder, taskStatus, pageUrl]);
 
   //calculate time remaining to task
   const calculateTimeRemaining = date1 => {
@@ -278,83 +289,135 @@ const TaskTaple = props => {
         </div>
       </div>
       <div className={classes.taple}>
-        <div className={classes.tapleHeaderContaner}>
-          <div
-            style={
-              taskStatus === true
-                ? { gridTemplateColumns: '2fr 1fr 1fr' }
-                : { gridTemplateColumns: '2fr 1fr 1fr 1fr' }
-            }
-            className={classes.tapleHeader}
-          >
-            <div className={classes.tapleHeaderItem}>Title</div>
-            <div className={classes.tapleHeaderItem}>
-              {taskOrder === '/sent-tasks' ? ' Resever' : 'Sender'}
+        <div className={classes.tapleContent}>
+          <div className={classes.tapleHeaderContaner}>
+            <div
+              style={
+                taskStatus === true
+                  ? { gridTemplateColumns: '2fr 1fr 1fr' }
+                  : { gridTemplateColumns: '2fr 1fr 1fr 1fr' }
+              }
+              className={classes.tapleHeader}
+            >
+              <div className={classes.tapleHeaderItem}>Title</div>
+              <div className={classes.tapleHeaderItem}>
+                {taskOrder === '/sent-tasks' ? ' Resever' : 'Sender'}
+              </div>
+              <div className={classes.tapleHeaderItem}>Deadline</div>
+              {taskStatus === true ? null : (
+                <div className={classes.tapleHeaderItem}>Time Remaining</div>
+              )}
             </div>
-            <div className={classes.tapleHeaderItem}>Deadline</div>
-            {taskStatus === true ? null : (
-              <div className={classes.tapleHeaderItem}>Time Remaining</div>
+          </div>
+          <div className={classes.tapleBodyContaner}>
+            {tasks.length === 0 ? (
+              <h1 className={classes.emptyTasks}>
+                Sorry no tasks available
+                <FontAwesomeIcon
+                  className={classes.iconeError}
+                  icon={faTriangleExclamation}
+                />
+              </h1>
+            ) : (
+              tasks.map(taskfiller => (
+                <div
+                  id={taskfiller.id}
+                  onClick={openTaskWindow}
+                  key={taskfiller.id}
+                  className={classes.tapleBodyItemContaner}
+                >
+                  <div
+                    style={
+                      taskfiller.status === true
+                        ? { gridTemplateColumns: '2fr 1fr 1fr' }
+                        : { gridTemplateColumns: '2fr 1fr 1fr 1fr' }
+                    }
+                    key={taskfiller.id}
+                    className={classes.tapleBodyItem}
+                  >
+                    <div className={classes.item}>{taskfiller.title}</div>
+                    <div className={classes.item}>
+                      <UserLogo
+                        role={
+                          taskOrder === '/sent-tasks'
+                            ? taskfiller.receivers.role
+                            : taskfiller.staff.role
+                        }
+                      ></UserLogo>
+                      {taskfiller.receivers.user}
+                    </div>
+                    <div className={classes.item}>
+                      {' '}
+                      <FontAwesomeIcon
+                        className={classes.iconeDeadline}
+                        icon={faClock}
+                      />{' '}
+                      {taskfiller.deadline}
+                    </div>
+                    {
+                      // if task status is open show time remaining
+                      taskfiller.status === true ? null : (
+                        <div className={classes.item}>
+                          {calculateTimeRemaining(taskfiller.deadline)}
+                        </div>
+                      )
+                    }
+                  </div>
+                </div>
+              ))
             )}
           </div>
         </div>
-        <div className={classes.tapleBodyContaner}>
-          {tasks.length === 0 ? (
-            <h1 className={classes.emptyTasks}>
-              Sorry no tasks available
+
+        {/* create pajenation  */}
+        <ul style={{ height: '10%' }}>
+          {pageNext === null ? (
+            <button disabled={true} className={classes.btnPagenationDisable}>
+              Next
               <FontAwesomeIcon
-                className={classes.iconeError}
-                icon={faTriangleExclamation}
-              />
-            </h1>
+                        className={classes.iconePagenationDisable}
+                        icon={faForward}
+                      />
+            </button>
           ) : (
-            tasks.map(taskfiller => (
-              <div
-                id={taskfiller.id}
-                onClick={openTaskWindow}
-                key={taskfiller.id}
-                className={classes.tapleBodyItemContaner}
-              >
-                <div
-                  style={
-                    taskfiller.status === true
-                      ? { gridTemplateColumns: '2fr 1fr 1fr' }
-                      : { gridTemplateColumns: '2fr 1fr 1fr 1fr' }
-                  }
-                  key={taskfiller.id}
-                  className={classes.tapleBodyItem}
-                >
-                  <div className={classes.item}>{taskfiller.title}</div>
-                  <div className={classes.item}>
-                    <UserLogo
-                      role={
-                        taskOrder === '/sent-tasks'
-                          ? taskfiller.receivers.role
-                          : taskfiller.staff.role
-                      }
-                    ></UserLogo>
-                    {taskfiller.receivers.user}
-                  </div>
-                  <div className={classes.item}>
-                    {' '}
-                    <FontAwesomeIcon
-                      className={classes.iconeDeadline}
-                      icon={faClock}
-                    />{' '}
-                    {taskfiller.deadline}
-                  </div>
-                  {
-                    // if task status is open show time remaining
-                    taskfiller.status === true ? null : (
-                      <div className={classes.item}>
-                        {calculateTimeRemaining(taskfiller.deadline)}
-                      </div>
-                    )
-                  }
-                </div>
-              </div>
-            ))
+            <button
+              disabled={false}
+              className={classes.btnPagenation}
+              onClick={() => {
+                updatePageUrl(pageNext);
+              }}
+            >
+              Next
+              <FontAwesomeIcon
+                        className={classes.iconePagenation}
+                        icon={faForward}
+                      />
+            </button>
           )}
-        </div>
+          {pagePrevious === null ? (
+            <button disabled={true} className={classes.btnPagenationDisable}>
+              Previous
+              <FontAwesomeIcon
+                        className={classes.iconePagenationDisable}
+                        icon={faBackward}
+                      />
+            </button>
+          ) : (
+            <button
+              disabled={false}
+              className={classes.btnPagenation}
+              onClick={() => {
+                updatePageUrl(pageNext);
+              }}
+            >
+              Previous
+              <FontAwesomeIcon
+                        className={classes.iconePagenation}
+                        icon={faBackward}
+                      />
+            </button>
+          )}
+        </ul>
       </div>
     </div>
   );

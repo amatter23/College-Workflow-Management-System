@@ -31,16 +31,28 @@ export function getTasks(taskOrder) {
 }
 // get tasks filltred by status  //taskOrder is a (sent-tasks or resved tasks)
 //taskStatus is a (true or false)
-export function getTasksFilltred(taskOrder, taskStatus) {
-  return fetch(api_url + taskOrder + '/?status=' + taskStatus, {
-    headers: {
-      Authorization: auth,
-    },
-  })
-    .then(response => response.json())
-    .then(data => {
-      return data;
-    });
+export function getTasksFilltred(taskOrder, taskStatus, paginationUrl) {
+  if (paginationUrl !== null) {
+    return fetch(paginationUrl, {
+      headers: {
+        Authorization: auth,
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        return data;
+      });
+  } else {
+    return fetch(api_url + taskOrder + '/?status=' + taskStatus, {
+      headers: {
+        Authorization: auth,
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        return data;
+      });
+  }
 }
 
 // create a new task
