@@ -113,7 +113,13 @@ export function addResponsee(
     });
 }
 // update a task details
-export function updateTask(taskId, taskDeadline, taskStatus, taskReceiver) {
+export function updateTask(
+  taskId,
+  taskDeadline,
+  taskStatus,
+  taskReceiver,
+  taskTitle
+) {
   return fetch(api_url + '/sent-tasks/' + taskId + '/', {
     method: 'PUT',
     body: JSON.stringify({
@@ -121,6 +127,7 @@ export function updateTask(taskId, taskDeadline, taskStatus, taskReceiver) {
       file: null,
       status: taskStatus,
       receivers: taskReceiver,
+      title: taskTitle,
     }),
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
@@ -193,6 +200,22 @@ export function searchTasks(taskOrder, searchValue, taskStatus) {
       },
     }
   )
+    .then(response => response.json())
+    .then(data => {
+      return data;
+    });
+}
+
+export function deleteTask(
+  taskId,
+) {
+  return fetch(api_url + '/sent-tasks/' + taskId + '/', {
+    method: 'DELETE',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+      Authorization: auth,
+    },
+  })
     .then(response => response.json())
     .then(data => {
       return data;
