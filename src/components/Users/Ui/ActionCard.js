@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import classes from './ActionCard.module.css';
 import AddTask from './AddTask';
 import { NavLink, useNavigate } from 'react-router-dom';
-
+import Actions from '../Pages/Actions';
 const ActionCard = props => {
   const navigate = useNavigate();
   //! collor handling
@@ -37,30 +37,36 @@ const ActionCard = props => {
       },
     },
     {
-      name: 'Taks',
-      title: 'submit task',
-      btn: 'Submit',
+      name: 'Task',
+      title: 'Add new response',
+      btn: 'Add',
       color: 4,
-      fun: () => {
-        <AddTask></AddTask>;
+      fun: function () {
+        navigate('/Actions', {
+          state: { action: "addResponse" }
+        });
       },
     },
     {
-      name: 'Taks',
+      name: 'Task',
       title: 'Edit task',
       btn: 'Edit',
       color: 1,
       fun: function () {
-        <AddTask></AddTask>;
+        navigate('/Actions', {
+          state: { action: "editTask" }
+        });
       },
     },
     {
-      name: 'Taks',
+      name: 'Task',
       title: 'Delete task',
       btn: 'Delete',
       color: 2,
       fun: () => {
-        return <AddTask></AddTask>;
+        navigate('/Actions', {
+          state: { action: "deleteTask" }
+        });
       },
     },
   ];
@@ -85,7 +91,6 @@ const ActionCard = props => {
   };
   //* done
 
-  
   return (
     <div
       className={classes.actionCard}
