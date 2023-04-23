@@ -1,0 +1,235 @@
+body {
+  color: var(--text_color_1);
+}
+.Actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  height: 80%;
+  padding: calc(var(--units) / 2) calc(var(--units) / 2);
+  background-color: var(--backgroundcolor_2);
+  border-radius: calc(var(--units) / 2);
+  box-shadow: 0 0 10px var(--backgroundcolor_2);
+  margin: auto;
+  gap: calc(var(--units));
+}
+.content {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  gap: calc(var(--units) * 2);
+}
+.searchCom {
+  width: 100%;
+}
+.search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(var(--units) / 1.2);
+  font-weight: 600;
+  color: var(--text_color_1);
+  padding: calc(var(--units) / 2) calc(var(--units) / 2);
+  width: 100%;
+  background-color: var(--backgroundcolor_1);
+  border: solid 1px var(--backgroundcolor_2);
+  border-radius: calc(var(--units) / 2);
+  transition: 100ms ease-in-out;
+}
+.search:hover {
+  border: solid 1px var(--text_color_1);
+}
+.taskCont {
+  width: 100%;
+  height: fit-content;
+  max-height: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--units));
+  overflow-y: auto;
+  border: solid 1px var(--backgroundcolor_1);
+  border-radius: calc(var(--units) / 2);
+  padding: calc(var(--units) / 2) calc(var(--units) / 2);
+}
+.task {
+  font-size: calc(var(--units) / 1.3);
+  width: 80%;
+  background-color: var(--backgroundcolor_1);
+  border-radius: calc(var(--units) / 2);
+  padding: calc(var(--units) / 2) var(--units);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: solid 1px var(--backgroundcolor_1);
+  transition: 100ms ease-in-out;
+}
+.task:hover{
+  border: solid 1px var(--text_color_1);
+}
+input[type='date'] {
+  width: fit-content;
+  font-size: calc(var(--units) / 1.1);
+  padding: calc(var(--units) / 2) calc(var(--units) * 2);
+  background-color: var(--color11);
+  border-radius: calc(var(--units) / 2);
+  color: var(--color1);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+::-webkit-calendar-picker-indicator {
+  background-color: var(--backgroundcolor_1);
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+  color: var(--text_color_1);
+}
+
+.editTask {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: calc(var(--units));
+}
+.editTask input[type='text'] {
+  width: 70%;
+  font-size: calc(var(--units) / 1.1);
+  padding: calc(var(--units) / 2) calc(var(--units) * 2);
+  background-color: var(--backgroundcolor_1);
+  border-radius: calc(var(--units) / 2);
+
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.editTask label {
+  font-size: calc(var(--units));
+  color: var(--text_color_1);
+  font-weight: 600;
+}
+.editTask button {
+  width: 70%;
+  font-size: calc(var(--units) / 1.1);
+  padding: calc(var(--units) / 2) calc(var(--units) * 2);
+  background-color: var(--backgroundcolor_1);
+  border-radius: calc(var(--units) / 2);
+  color: var(--text_color_2);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  cursor: pointer;
+  border: solid 1px var(--text_color_2);
+  transition: 200ms ease-in-out;
+}
+
+.editTask button:hover {
+  background-color: var(--text_color_2);
+  color: var(--backgroundcolor_1);
+}
+.addResponse {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: calc(var(--units)/2);
+}
+input[type='text']:focus {
+  border: solid 1px var(--text_color_1);
+}
+.addResponse input[type='text'] {
+  width: 70%;
+  font-size: calc(var(--units) / 1.1);
+  padding: calc(var(--units) / 2) calc(var(--units) * 2);
+  background-color: var(--backgroundcolor_1);
+  border-radius: calc(var(--units) / 2);
+
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.addResponse button {
+  width: 70%;
+  font-size: calc(var(--units) / 1.1);
+  padding: calc(var(--units) / 2) calc(var(--units) * 2);
+  background-color: var(--backgroundcolor_1);
+  border-radius: calc(var(--units) / 2);
+  color: var(--text_color_2);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  cursor: pointer;
+  border: solid 1px var(--text_color_2);
+  transition: 200ms ease-in-out;
+}
+
+.addResponse button:hover {
+  background-color: var(--text_color_2);
+  color: var(--backgroundcolor_1);
+}
+
+.addResponse input[type='file'] {
+  color: var(--color4);
+  border: none;
+  border-radius: 0;
+  padding: calc(var(--units) / 2) calc(var(--units));
+  box-shadow: rgba(150, 149, 149, 0.16) 0px 1px 4px;
+  border-radius: calc(var(--units) / 2);
+  gap: var(--units);
+  font-size: calc(var(--units) / 1.5);
+  background-color: var(--color14);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.addResponse  input[type='file']::file-selector-button {
+  border: none;
+  color: var(--text_color_3);
+  background-color: var(--color24);
+  padding: calc(var(--units) / 2) calc(var(--units));
+  border-radius: calc(var(--units) / 2);
+  cursor: pointer;
+  margin-right: var(--units);
+  transition: all 0.3s ease;
+}
+
+.addResponse  input[type='file']::file-selector-button:hover {
+  background-color: var(--backgroundcolor_1);
+  color: var(--color4);
+  border: solid 1px var(--color24);
+}
+.deleteTask{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+.deleteTask button {
+  width: 70%;
+  font-size: calc(var(--units) / 1.1);
+  padding: calc(var(--units) / 2) calc(var(--units) * 2);
+  background-color: var(--backgroundcolor_1);
+  border-radius: calc(var(--units) / 2);
+  color: var(--text_color_2);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  cursor: pointer;
+  border: solid 1px var(--text_color_2);
+  transition: 200ms ease-in-out;
+}
+
+.deleteTask button:hover {
+  background-color: var(--text_color_2);
+  color: var(--backgroundcolor_1);
+}
