@@ -75,7 +75,7 @@ const Actions = props => {
     const response = await addResponsee(
       event.target.title.value,
       event.target.description.value,
-      null,
+      event.target.file.value,
       taskId
     )
       .then(data => {
