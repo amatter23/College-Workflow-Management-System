@@ -95,16 +95,21 @@ const TaskDetailsTest = props => {
       window.location.reload();
     }, 5000);
   };
+  const [file, setFile] = useState(null);
+  const getFileData = e => {
+    setFile(e.target.files[0]);
+  };
   const addResponse = async event => {
     event.preventDefault();
     console.log(event);
+    let uploadedFile = document.getElementById('file').files[0];
+    var form_data = new FormData();
+    form_data.append('file', uploadedFile);
+    form_data.append('title', event.target[0].value);
+    form_data.append('description', event.target[1].value);
+    form_data.append('task', taskId);
     try {
-      const response = await addResponsee(
-        event.target[0].value,
-        event.target[1].value,
-        null,
-        taskId
-      );
+      const response = await addResponsee(form_data);
       toast.success('Task Done', {
         position: toast.POSITION.TOP_LEFT,
       });
@@ -493,7 +498,7 @@ const TaskDetailsTest = props => {
                           Attachment
                         </label>
                         {/* <input value={taskData.file} type='file' /> */}
-                        <input id='file' type='file' />
+                        <input id='file' name='file' type='file' />
                       </div>
                       <button>
                         Add Response <FontAwesomeIcon icon={faReply} />
