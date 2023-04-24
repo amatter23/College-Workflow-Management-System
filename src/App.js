@@ -6,7 +6,6 @@ import AdminDate from './Data/DummyData';
 import Home from './components/Admin/Home/Home';
 import Delete from './components/Ui/Delete.js';
 import Login from './components/Login/Login';
-import AdminRoute from './components/Admin/AdminRoute';
 import UserRoute from './components/Users/UserRoute';
 import ActionCard from './components/Users/Ui/ActionCard';
 import UserCard from './components/Users/Ui/UserCard';
@@ -23,6 +22,7 @@ import TaskDetails from './components/Users/Ui/TaskDetails';
 import TaskDetailsTest from './components/Users/Ui/TaskDetails';
 import TaskOptions from './components/Users/Ui/TaskOptions';
 import Actions from './components/Users/Pages/Actions';
+import AdminRoute from './components/AdminNewV/AdminRoute';
 import UserInformation from './components/Users/Pages/UserInformation';
 import { checkAuth, loginPageRedirect } from './components/Users/Events/auth';
 import { getUserData } from './components/Users/Events/getMainData';
@@ -51,6 +51,7 @@ function App(props) {
           id: data.id,
           title: data.staff.title,
           email: data.email,
+          staff: data.staff,
         });
       });
       setIsLoading(false);
@@ -112,12 +113,30 @@ function App(props) {
       ],
     },
   ]);
+  const routerAdmin = createBrowserRouter([
+    {
+      path: '/',
+      element: <AdminRoute userData={userData} />,
+      children: [
+        {
+          path: '/auth',
+          element: <Login />,
+          loader: loginPageRedirect,
+        },
+        {
+          path: '/test',
+          element: <div>ttt</div>,
+          loader: loginPageRedirect,
+        },
+      ],
+    },
+  ]);
   return (
     <>
       {isLoading ? (
         <h1>loading</h1>
-      ) : userData.role === 'admin' ? (
-        <AdminRoute data={data} />
+      ) : userData.staff === undefined ? (
+        <RouterProvider router={routerAdmin} />
       ) : (
         <RouterProvider router={routerUser} />
       )}
