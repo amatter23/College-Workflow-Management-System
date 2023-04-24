@@ -88,22 +88,12 @@ export function createTask(
   // })
 }
 
-export function addResponsee(
-  responseTitle,
-  responseDescription,
-  responseFile,
-  taskId
-) {
+export function addResponsee(formData) {
   return fetch(api_url + '/tasks-responses/', {
     method: 'POST',
-    body: JSON.stringify({
-      title: responseTitle,
-      description: responseDescription,
-      file: responseFile,
-      task: taskId,
-    }),
+    body: formData,
+
     headers: {
-      'Content-type': 'application/json; charset=UTF-8',
       Authorization: auth,
     },
   })
@@ -206,9 +196,7 @@ export function searchTasks(taskOrder, searchValue, taskStatus) {
     });
 }
 
-export function deleteTask(
-  taskId,
-) {
+export function deleteTask(taskId) {
   return fetch(api_url + '/sent-tasks/' + taskId + '/', {
     method: 'DELETE',
     headers: {
