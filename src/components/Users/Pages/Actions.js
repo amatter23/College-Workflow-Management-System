@@ -70,14 +70,18 @@ const Actions = props => {
       });
   };
 
+  const [file, setFile] = useState(null);
+  const getFileData = e => {
+    setFile(e.target.files[0]);
+  };
   const handlerAddResponse = async event => {
     event.preventDefault();
-    const response = await addResponsee(
-      event.target.title.value,
-      event.target.description.value,
-      event.target.file.value,
-      taskId
-    )
+    var form_data = new FormData();
+    form_data.append('file', file);
+    form_data.append('title', event.target.title.value);
+    form_data.append('description', event.target.description.value);
+    form_data.append('task', taskId);
+    const response = await addResponsee(form_data)
       .then(data => {
         toast.success('Response Added Successfully', {});
       })
@@ -87,6 +91,8 @@ const Actions = props => {
         }, 5000);
       });
   };
+
+  // update a task details
 
   const handlerdeleteTask = async event => {
     event.preventDefault();
@@ -106,15 +112,15 @@ const Actions = props => {
         return (
           <form onSubmit={handlerAddResponse} className={classes.addResponse}>
             {taskData.task_response === null ? (
-              <>
+              <div>
                 <label htmlFor=''>Title</label>
                 <input id='title' type='text' />
                 <label htmlFor=''>Description</label>
                 <input id='description' type='text' />
                 <label htmlFor=''>File</label>
-                <input id='file' type='file' />
+                <input onChange={getFileData} id='file' name='myFile' type='file' />
                 <button>Add Response</button>
-              </>
+              </div>
             ) : (
               <h3>This task have a response already</h3>
             )}
