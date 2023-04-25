@@ -23,6 +23,8 @@ import TaskDetailsTest from './components/Users/Ui/TaskDetails';
 import TaskOptions from './components/Users/Ui/TaskOptions';
 import Actions from './components/Users/Pages/Actions';
 import AdminRoute from './components/AdminNewV/AdminRoute';
+import UserTable from './components/AdminNewV/Ui/UserTable';
+
 import UserInformation from './components/Users/Pages/UserInformation';
 import { checkAuth, loginPageRedirect } from './components/Users/Events/auth';
 import { getUserData } from './components/Users/Events/getMainData';
@@ -119,15 +121,16 @@ function App(props) {
       element: <AdminRoute userData={userData} />,
       children: [
         {
+          path: '/',
+          element: <UserTable />,
+          loader: checkAuth,
+        },
+        {
           path: '/auth',
           element: <Login />,
           loader: loginPageRedirect,
         },
-        {
-          path: '/test',
-          element: <div>ttt</div>,
-          loader: loginPageRedirect,
-        },
+        
       ],
     },
   ]);
