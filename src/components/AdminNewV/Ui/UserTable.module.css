@@ -1,0 +1,68 @@
+.MainContaner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: calc(var(--units));
+}
+.TableContaner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.TableContaner table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  padding: var(--units);
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.TableContaner table thead tr {
+  background-color: var(--backgroundcolor_2);
+  border-radius: var(--units);
+  padding:  var(--units);
+}
+.TableContaner table tbody tr {
+  background-color: var(--backgroundcolor_1);
+  transition: 200ms all ease-in-out;
+ 
+}
+.TableContaner table tbody tr:hover {
+  scale: 1.01;
+  background-color: var(--backgroundcolor_2);
+}
+.TableContaner table td {
+  text-align: left;
+  padding:  var(--units) ;
+  border-bottom: solid 1px var(--backgroundcolor_2);
+  transition: 100ms all ease-in-out;
+}
+
+.TableContaner table td :hover {
+  scale: 1.01;
+  background-color: var(--backgroundcolor_2);
+}
+.TableContaner table th {
+  text-align: left;
+  padding: var(--units);
+  border-bottom: solid 1px var(--backgroundcolor_2);
+  transition: 100ms all ease-in-out;
+  background-color: #4caf4f00;
+}
+
+.TableContaner table td :hover {
+  scale: 1.01;
+  background-color: var(--backgroundcolor_2);
+}
+.deleteBtn{
+    text-align: center !important;
+}
