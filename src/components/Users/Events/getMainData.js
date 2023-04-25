@@ -209,3 +209,34 @@ export function deleteTask(taskId) {
       return data;
     });
 }
+
+
+export function getUsers() {
+  var error = false;
+  return fetch(api_url + '/auth/user/', {
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+      Authorization: auth,
+    },
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        error = true;
+      }
+    })
+    .then(data => {
+      return { data, error };
+    });
+  // .then(json => {
+  //   return {
+  //     response: resp,
+  //     errorMassage: json,
+  //     error: !resp,
+  //   };
+  // })
+  // .then(data => {
+  //   return data;
+  // });
+}
