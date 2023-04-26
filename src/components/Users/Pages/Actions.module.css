@@ -72,7 +72,7 @@ body {
 .task:hover{
   border: solid 1px var(--text_color_1);
 }
-input[type='date'] {
+.Actions input[type='date'] {
   width: fit-content;
   font-size: calc(var(--units) / 1.1);
   padding: calc(var(--units) / 2) calc(var(--units) * 2);
@@ -142,7 +142,7 @@ input[type='date'] {
   width: 100%;
   gap: calc(var(--units)/2);
 }
-input[type='text']:focus {
+.Actions input[type='text']:focus {
   border: solid 1px var(--text_color_1);
 }
 .addResponse input[type='text'] {
