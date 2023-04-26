@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import classes from './TaskTaple.module.css';
 import UserLogo from './UserLogo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,59 +17,103 @@ import { getTasksFilltred, searchTasks } from '../Events/getMainData';
 import AddTask from './AddTask';
 import { NavLink, useNavigate } from 'react-router-dom';
 const TaskTaple = props => {
+
   //user defined data
   const [userData, updateDate] = useState(props.userData);
 
+
   //toggle state change on user role change
-  const [toggleState, updateToggleState] = useState({
-    //
-    taskRole: [
-      {
-        // name of the toggle
-        name: 'Assigned',
-        // task order of the toggle
-        taskOrder: '/sent-tasks',
-        updateTaskOrderf: function (event) {
-          // update the state with the new task order of role
-          updateTaskOrder('/sent-tasks');
-          document
-            // change he hover style when btn is clicked
-            .getElementById('Assigned')
-            .classList.remove(`${classes.toggleActive}`);
-          document
-            .getElementById('Received')
-            .classList.remove(`${classes.toggleActive}`);
-          document
-            .getElementById('Assigned')
-            .classList.add(`${classes.toggleActive}`);
-        },
-      },
-      {
-        name: 'Received',
-        taskOrder: '/received-tasks',
-        updateTaskOrderf: function (event) {
-          updateTaskOrder('/received-tasks');
-          document
-            .getElementById('Assigned')
-            .classList.remove(`${classes.toggleActive}`);
-          document
-            .getElementById('Received')
-            .classList.remove(`${classes.toggleActive}`);
-          document
-            .getElementById('Received')
-            .classList.add(`${classes.toggleActive}`);
-        },
-      },
-    ],
+  const [toggleState, updateToggleState] = useState(() => {
+    if (userData.role === 'dean') {
+      return {
+        taskRole: [
+          {
+            name: 'Assigned',
+            taskOrder: '/sent-tasks',
+            updateTaskOrderf: function (event) {
+              updateTaskOrder('/sent-tasks');
+              document
+                .getElementById('Assigned')
+                .classList.remove(`${classes.toggleActive}`);
+              document
+                .getElementById('Received')
+                .classList.remove(`${classes.toggleActive}`);
+              document
+                .getElementById('Assigned')
+                .classList.add(`${classes.toggleActive}`);
+            },
+          },
+        ],
+      };
+    } else if (userData.role === 'vice' || userData.role === 'head') {
+      return {
+        taskRole: [
+          {
+            name: 'Assigned',
+            taskOrder: '/sent-tasks',
+            updateTaskOrderf: function (event) {
+              updateTaskOrder('/sent-tasks');
+              document
+                .getElementById('Assigned')
+                .classList.remove(`${classes.toggleActive}`);
+              document
+                .getElementById('Received')
+                .classList.remove(`${classes.toggleActive}`);
+              document
+                .getElementById('Assigned')
+                .classList.add(`${classes.toggleActive}`);
+            },
+          },
+          {
+            name: 'Received',
+            taskOrder: '/received-tasks',
+            updateTaskOrderf: function (event) {
+              updateTaskOrder('/received-tasks');
+              document
+                .getElementById('Assigned')
+                .classList.remove(`${classes.toggleActive}`);
+              document
+                .getElementById('Received')
+                .classList.remove(`${classes.toggleActive}`);
+              document
+                .getElementById('Received')
+                .classList.add(`${classes.toggleActive}`);
+            },
+          },
+        ],
+      };
+    } else {
+      return {
+        taskRole: [
+          {
+            name: 'Received',
+            taskOrder: '/received-tasks',
+            updateTaskOrderf: function (event) {
+              updateTaskOrder('/received-tasks');
+              document
+                .getElementById('Assigned')
+                .classList.remove(`${classes.toggleActive}`);
+              document
+                .getElementById('Received')
+                .classList.remove(`${classes.toggleActive}`);
+              document
+                .getElementById('Received')
+                .classList.add(`${classes.toggleActive}`);
+            },
+          },
+        ],
+      };
+    }
   });
 
-  // toggle state change on user role change
-  const [buttonToggle, updatebuttonToggle] = useState(
-    toggleState.taskRole[0].name
-  );
+ 
 
+  // handel error loading
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
   // state to store tasks
   const [tasks, updateTasks] = useState([]);
+
 
   // pagination handler state
   const [tasksNumber, updateTasksNumber] = useState();
@@ -77,10 +121,20 @@ const TaskTaple = props => {
   const [pagePrevious, updatePagePrevious] = useState(null);
   const [pageUrl, updatePageUrl] = useState(null);
 
+
   // change taskOrder on user role change
   const [taskOrder, updateTaskOrder] = useState(
     toggleState.taskRole[0].taskOrder
   );
+
+
+   // toggle state change on user role change
+   const [buttonToggle, updatebuttonToggle] = useState(
+    toggleState.taskRole[0].name
+  );
+
+
+  // task status state
   const [taskStatus, updateTaskStatus] = useState(false);
   // change task status on click on open or done btn and change the style of the btn
   const changeTaskStatus = event => {
@@ -92,100 +146,33 @@ const TaskTaple = props => {
       .classList.add(`${classes.toggleActive}`);
   };
 
-  // useeffect to change when compnat is rendered cahanege the toggle state
-  // get tasks on user role change and on task status change
-  useEffect(() => {
-    if (userData.role === 'dean') {
-      updateToggleState({
-        taskRole: [
-          {
-            name: 'Assigned',
-            taskOrder: '/sent-tasks',
-            updateTaskOrderf: function (event) {
-              updateTaskOrder('/sent-tasks');
-              document
-                .getElementById('Assigned')
-                .classList.remove(`${classes.toggleActive}`);
-              document
-                .getElementById('Received')
-                .classList.remove(`${classes.toggleActive}`);
-              document
-                .getElementById('Assigned')
-                .classList.add(`${classes.toggleActive}`);
-            },
-          },
-        ],
+
+  // fetch data from api
+  const fetchData = async () => {
+    try {
+      const response = await getTasksFilltred(
+        taskOrder,
+        taskStatus,
+        pageUrl
+      ).then(data => {
+        updatePageNext(data.next);
+        updatePagePrevious(data.previous);
+        setIsLoading(false);
+        updateTasksNumber(data.count);
+        updateTasks(data.results);
       });
-    } else if (userData.role === 'vice' || userData.role === 'head') {
-      updateToggleState({
-        taskRole: [
-          {
-            name: 'Assigned',
-            taskOrder: '/sent-tasks',
-            updateTaskOrderf: function (event) {
-              updateTaskOrder('/sent-tasks');
-              document
-                .getElementById('Assigned')
-                .classList.remove(`${classes.toggleActive}`);
-              document
-                .getElementById('Received')
-                .classList.remove(`${classes.toggleActive}`);
-              document
-                .getElementById('Assigned')
-                .classList.add(`${classes.toggleActive}`);
-            },
-          },
-          {
-            name: 'Received',
-            taskOrder: '/received-tasks',
-            updateTaskOrderf: function (event) {
-              updateTaskOrder('/received-tasks');
-              document
-                .getElementById('Assigned')
-                .classList.remove(`${classes.toggleActive}`);
-              document
-                .getElementById('Received')
-                .classList.remove(`${classes.toggleActive}`);
-              document
-                .getElementById('Received')
-                .classList.add(`${classes.toggleActive}`);
-            },
-          },
-        ],
-      });
-    } else if (userData.role === 'dr' || userData.role === 'ta') {
-      updateToggleState({
-        taskRole: [
-          {
-            name: 'Received',
-            taskOrder: '/received-tasks',
-            updateTaskOrderf: function (event) {
-              updateTaskOrder('/received-tasks');
-              document
-                .getElementById('Assigned')
-                .classList.remove(`${classes.toggleActive}`);
-              document
-                .getElementById('Received')
-                .classList.remove(`${classes.toggleActive}`);
-              document
-                .getElementById('Received')
-                .classList.add(`${classes.toggleActive}`);
-            },
-          },
-        ],
-      });
+    } catch (error) {
+      console.log(error);
+      setError(true);
+      setIsLoading(false);
     }
-    // remove serach value on use and toggle
+  };
+
+  useEffect(() => {
     if (document.getElementById('search')) {
       document.getElementById('search').value = '';
     }
-
-    getTasksFilltred(taskOrder, taskStatus, pageUrl).then(data => {
-      updatePageNext(data.next);
-      updatePagePrevious(data.previous);
-      updateTasks(data.results);
-      updateTasksNumber(data.count);
-    });
+    fetchData();
   }, [taskOrder, taskStatus, pageUrl]);
 
   //calculate time remaining to task
@@ -224,6 +211,26 @@ const TaskTaple = props => {
     });
   };
 
+
+  if (isLoading) {
+    return (
+      <div>
+        <div>
+          <h3 style={{ textAlign: 'center' }}>Loading</h3>
+        </div>
+      </div>
+    );
+  } else if (error) {
+    return (
+      <div>
+        <div>
+          <h3 style={{ textAlign: 'center' }}>
+            Failed to load your tasks.... please try again
+          </h3>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className={classes.contaner}>
       <div className={classes.haeder}>
@@ -375,9 +382,9 @@ const TaskTaple = props => {
             <button disabled={true} className={classes.btnPagenationDisable}>
               Next
               <FontAwesomeIcon
-                        className={classes.iconePagenationDisable}
-                        icon={faForward}
-                      />
+                className={classes.iconePagenationDisable}
+                icon={faForward}
+              />
             </button>
           ) : (
             <button
@@ -389,18 +396,18 @@ const TaskTaple = props => {
             >
               Next
               <FontAwesomeIcon
-                        className={classes.iconePagenation}
-                        icon={faForward}
-                      />
+                className={classes.iconePagenation}
+                icon={faForward}
+              />
             </button>
           )}
           {pagePrevious === null ? (
             <button disabled={true} className={classes.btnPagenationDisable}>
               Previous
               <FontAwesomeIcon
-                        className={classes.iconePagenationDisable}
-                        icon={faBackward}
-                      />
+                className={classes.iconePagenationDisable}
+                icon={faBackward}
+              />
             </button>
           ) : (
             <button
@@ -412,9 +419,9 @@ const TaskTaple = props => {
             >
               Previous
               <FontAwesomeIcon
-                        className={classes.iconePagenation}
-                        icon={faBackward}
-                      />
+                className={classes.iconePagenation}
+                icon={faBackward}
+              />
             </button>
           )}
         </ul>
