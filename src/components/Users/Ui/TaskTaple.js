@@ -414,7 +414,7 @@ const TaskTaple = props => {
               disabled={false}
               className={classes.btnPagenation}
               onClick={() => {
-                updatePageUrl(pageNext);
+                updatePageUrl(pagePrevious);
               }}
             >
               Previous
