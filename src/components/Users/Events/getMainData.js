@@ -210,10 +210,9 @@ export function deleteTask(taskId) {
     });
 }
 
-
 export function getUsers() {
   var error = false;
-  return fetch(api_url + '/auth/user/', {
+  return fetch(api_url + '/auth/users/', {
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
       Authorization: auth,
@@ -239,4 +238,86 @@ export function getUsers() {
   // .then(data => {
   //   return data;
   // });
+}
+
+export function deleteUser(userId) {
+  var error = false;
+  return fetch(api_url + '/auth/users/' + userId + '/', {
+    method: 'DELETE',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+      Authorization: auth,
+    },
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        error = true;
+      }
+    })
+    .then(data => {
+      return { data, error };
+    });
+}
+
+// todo //userRole, UserTitle,userFirstName, userLastName userDepartment
+// todo wait for backend
+export function addNewUser(userUserName, UserEmail, UserPassword) {
+  var error = false;
+  return fetch(api_url + '/auth/users/', {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+      Authorization: auth,
+    },
+    body: JSON.stringify({
+      username: userUserName,
+      email: UserEmail,
+      password: UserPassword,
+    }),
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        error = true;
+      }
+    })
+    .then(data => {
+      return { data, error };
+    });
+}
+
+export function getAllTasks() {
+  var error = false;
+  return fetch(api_url + '/tasks/', {
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+      Authorization: auth,
+    },
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        error = true;
+      }
+    })
+    .then(data => {
+      return { data, error };
+    });
+}
+
+export function deleteTaskAdmin(taskId) {
+  var error = false;
+  return fetch(api_url + '/tasks/' + taskId + '/', {
+    method: 'DELETE',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+      Authorization: auth,
+    },
+  }).then(data => {
+    return { data};
+  });
 }
