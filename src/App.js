@@ -24,7 +24,8 @@ import TaskOptions from './components/Users/Ui/TaskOptions';
 import Actions from './components/Users/Pages/Actions';
 import AdminRoute from './components/AdminNewV/AdminRoute';
 import UserTable from './components/AdminNewV/Ui/UserTable';
-
+import AdminUsers from './components/AdminNewV/Pages/AdminUsers';
+import AdminTasks from './components/AdminNewV/Pages/AdminTasks';
 import UserInformation from './components/Users/Pages/UserInformation';
 import { checkAuth, loginPageRedirect } from './components/Users/Events/auth';
 import { getUserData } from './components/Users/Events/getMainData';
@@ -122,7 +123,12 @@ function App(props) {
       children: [
         {
           path: '/',
-          element: <UserTable />,
+          element: <AdminUsers />,
+          loader: checkAuth,
+        },
+        {
+          path: '/tasks',
+          element: <AdminTasks />,
           loader: checkAuth,
         },
         {
