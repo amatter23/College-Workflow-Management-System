@@ -116,11 +116,11 @@
   gap: var(--units);
   align-items: center;
 }
-form {
+.contaner form {
   color: var(--text_color_1);
   width: 100%;
 }
-form input {
+.contaner form input {
   display: flex;
   text-align: center;
   padding: calc(var(--units) / 2) calc(var(--units) / 2);
@@ -129,7 +129,7 @@ form input {
     rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
-form .name label {
+.contaner form .name label {
   width: 50%;
   background-color: var(--color11);
   padding: calc(var(--units) / 2) calc(var(--units));
@@ -138,29 +138,29 @@ form .name label {
 
   text-align: center;
 }
-form .name input:focus {
+.contaner form .name input:focus {
   border: solid 1px var(--color1);
 }
-form .email {
+.contaner form .email {
   display: flex;
   flex-direction: row;
   gap: calc(var(--units));
   margin: auto;
 }
-form .email input {
+.contaner form .email input {
   width: 100%;
 }
-form .email label {
+.contaner form .email label {
   background-color: var(--color13);
   padding: calc(var(--units) / 2) calc(var(--units));
   color: var(--color3);
   border-radius: calc(var(--units) / 2);
 }
-form .staff {
+.contaner form .staff {
   display: flex;
   flex-direction: row;
 }
-form .staff label {
+.contaner form .staff label {
   background-color: var(--color14);
   padding: calc(var(--units) / 2) calc(var(--units));
   color: var(--color4);
