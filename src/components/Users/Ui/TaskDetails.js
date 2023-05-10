@@ -205,7 +205,7 @@ const TaskDetailsTest = props => {
                   <a
                     className={classes.dowBtn}
                     href={api_url + taskData.file}
-                    download
+                    
                   >
                     Download{' '}
                     <FontAwesomeIcon
@@ -306,7 +306,7 @@ const TaskDetailsTest = props => {
                       <a
                         className={classes.dowBtn}
                         href={taskData.file}
-                        download
+                        
                       >
                         Download
                         <FontAwesomeIcon
@@ -378,7 +378,7 @@ const TaskDetailsTest = props => {
                   <a
                     className={classes.dowBtn}
                     href={api_url + taskData.file}
-                    download
+                    
                   >
                     Download
                     <FontAwesomeIcon
@@ -563,7 +563,7 @@ const TaskDetailsTest = props => {
                 <div className={classes.item}>
                   <label htmlFor=''>Attachment </label>
                   {/* <input value={taskData.file} type='file' /> */}
-                  <a className={classes.dowBtn} href={taskData.file} download>
+                  <a className={classes.dowBtn} href={taskData.file} >
                     Download
                     <FontAwesomeIcon
                       onClick={props.openAddTaskModal}
@@ -668,7 +668,7 @@ const TaskDetailsTest = props => {
                       <a
                         className={classes.dowBtn}
                         href={taskData.task_response.file}
-                        download
+                        
                       >
                         Download
                         <FontAwesomeIcon
