@@ -17,10 +17,8 @@ import { getTasksFilltred, searchTasks } from '../Events/getMainData';
 import AddTask from './AddTask';
 import { NavLink, useNavigate } from 'react-router-dom';
 const TaskTaple = props => {
-
   //user defined data
   const [userData, updateDate] = useState(props.userData);
-
 
   //toggle state change on user role change
   const [toggleState, updateToggleState] = useState(() => {
@@ -106,14 +104,11 @@ const TaskTaple = props => {
     }
   });
 
- 
-
   // handel error loading
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   // state to store tasks
   const [tasks, updateTasks] = useState([]);
-
 
   // pagination handler state
   const [tasksNumber, updateTasksNumber] = useState();
@@ -121,18 +116,15 @@ const TaskTaple = props => {
   const [pagePrevious, updatePagePrevious] = useState(null);
   const [pageUrl, updatePageUrl] = useState(null);
 
-
   // change taskOrder on user role change
   const [taskOrder, updateTaskOrder] = useState(
     toggleState.taskRole[0].taskOrder
   );
 
-
-   // toggle state change on user role change
-   const [buttonToggle, updatebuttonToggle] = useState(
+  // toggle state change on user role change
+  const [buttonToggle, updatebuttonToggle] = useState(
     toggleState.taskRole[0].name
   );
-
 
   // task status state
   const [taskStatus, updateTaskStatus] = useState(false);
@@ -145,7 +137,6 @@ const TaskTaple = props => {
       .getElementById(event.target.id)
       .classList.add(`${classes.toggleActive}`);
   };
-
 
   // fetch data from api
   const fetchData = async () => {
@@ -202,6 +193,7 @@ const TaskTaple = props => {
     });
   };
 
+  const [addTaskView, updateAddTaskView] = useState(props.addTaskView);
   // open task details window on click on task
   const navigate = useNavigate();
   const openTaskWindow = event => {
@@ -210,7 +202,6 @@ const TaskTaple = props => {
       state: { taskOrder: `${taskOrder}`, taskId: `${event.currentTarget.id}` },
     });
   };
-
 
   if (isLoading) {
     return (
@@ -275,10 +266,13 @@ const TaskTaple = props => {
               </button>
             </div>
           </div>
-          <div className={classes.btnAddTask}>
+          <div
+            style={{ display: addTaskView ? 'flex' : 'none' }}
+            className={classes.btnAddTask}
+          >
             <NavLink to='/addTask'>Add Task</NavLink>
           </div>
-          {/* // *! tdodo: search style  */}
+
           {searchView === 1 ? (
             <div className={classes.search}>
               <input
