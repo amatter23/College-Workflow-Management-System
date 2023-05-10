@@ -56,36 +56,18 @@ export function getTasksFilltred(taskOrder, taskStatus, paginationUrl) {
 }
 
 // create a new task
-export function createTask(
-  taskTitle,
-  taskDescription,
-  // taskFile,
-  taskDeadline,
-  taskReceiver
-) {
+export function createTask(formData) {
   return fetch(api_url + '/sent-tasks/', {
     method: 'POST',
-    body: JSON.stringify({
-      title: taskTitle,
-      description: taskDescription,
-      deadline: taskDeadline,
-      file: null,
-      status: false,
-      receivers: taskReceiver,
-    }),
+    body: formData,
     headers: {
-      'Content-type': 'application/json; charset=UTF-8',
       Authorization: auth,
     },
-  });
-  // if response is ok return true if response contains error return false
-  // .then(response => {
-  //   if (response.ok) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // })
+  })
+    .then(response => response.json())
+    .then(data => {
+      return data;
+    });
 }
 
 export function addResponsee(formData) {
@@ -318,6 +300,6 @@ export function deleteTaskAdmin(taskId) {
       Authorization: auth,
     },
   }).then(data => {
-    return { data};
+    return { data };
   });
 }

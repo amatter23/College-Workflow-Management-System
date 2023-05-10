@@ -43,49 +43,26 @@ const AddTask = props => {
   //navigate to the page of tasks
   const navigate = useNavigate();
   // add a new route function
-  const addNewTask = event => {
-    event.preventDefault();
-    if (
-      createTask(
-        event.target[0].value,
-        event.target[1].value,
-        event.target[3].value,
 
-        event.target[4].value
-      ) === true
-    ) {
-    }
+  const addNewTask = async event => {
+    event.preventDefault();
+    let uploadedFile = document.getElementById('file').files[0];
+    console.log(uploadedFile);
+    var form_data = new FormData();
+    form_data.append('file', uploadedFile);
+    form_data.append('title', event.target[0].value);
+    form_data.append('description', event.target[1].value);
+    form_data.append('deadline', event.target[3].value);
+    form_data.append('receivers', event.target[4].value);
+    try {
+      const response = await createTask(form_data);
+    } catch (error) {}
 
     navigate('/tasks');
   };
-
-  // const [error, setresponse] = useState(false);
-  // const [success, setSuccess] = useState(false);
-  // const closepanal = () => {
-  //   setresponse(false);
-  //   setSuccess(false);
-  // };
-
   return (
     <div className={classes.contaner}>
       <div className={classes.back}>
-        {/* {error ? (
-          <div className={classes.error}>
-            <FontAwesomeIcon
-              icon={faCircleExclamation}
-              className={classes.icon}
-            />
-            <p>Something went wrong</p>
-            <button onClick={closepanal}> Try Again</button>
-          </div>
-        ) : null}
-        {success ? (
-          <div className={classes.success}>
-            <FontAwesomeIcon icon={faCircleCheck} className={classes.icon} />
-            <p>Action success</p>
-            <button onClick={closepanal}> Done</button>
-          </div>
-        ) : null} */}
         <div className={classes.form}>
           <div className={classes.header}>
             <h1 onClick={props.openAddTaskModal}>Task</h1>
@@ -123,12 +100,7 @@ const AddTask = props => {
               </div>
               <div className={classes.input}>
                 <label htmlFor='attachment'>Attachment</label>
-                <input
-                  type='file'
-                  name='attachment'
-                  id='attachment'
-                  defaultValue={null}
-                />
+                <input id='file' name='file' type='file' />
               </div>
               <div className={classes.input}>
                 <label htmlFor='deadline'>Deadline</label>
