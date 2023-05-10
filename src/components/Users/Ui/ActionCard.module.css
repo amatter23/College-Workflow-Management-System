@@ -48,7 +48,7 @@
 }
 .Second h1 {
   padding: 0.3rem;
-  font-size: calc(var(--units) * 1.2);
+  font-size: calc(var(--units) );
   border-radius: 8px;
   font-weight: 600;
   animation: example 1ms;
