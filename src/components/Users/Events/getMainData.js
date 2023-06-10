@@ -304,3 +304,29 @@ export function deleteTaskAdmin(taskId) {
   });
 }
 
+// get list of vacations
+export function getVacations() {
+  return fetch(api_url + '/leaverequests/', {
+    headers: {
+      Authorization: auth,
+    },
+  })
+    .then(response => response.json())
+    .then(data => {
+      return data;
+    });
+}
+
+// get list of vacations apply by user
+export function getVacationsApply() {
+  return fetch(api_url + '/vacationapply/', {
+    headers: {
+      Authorization: auth,
+    },
+  })
+    .then(response => response.json())
+    .then(data => {
+      return data;
+    });
+}
+
