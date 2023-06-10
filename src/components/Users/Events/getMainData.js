@@ -354,3 +354,19 @@ export function addNewVacation(
 
 
 
+// accept or refuse vacation
+
+export function acceptOrRefuseVacation(vacationId, vacationStatus) {
+  return fetch(api_url + '/leaverequests/' + vacationId + '/', {
+    method: 'PUT',
+    body: JSON.stringify({
+      approve: vacationStatus,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+      Authorization: auth,
+    },
+  }).then(response => {
+    return response.ok;
+  });
+}
