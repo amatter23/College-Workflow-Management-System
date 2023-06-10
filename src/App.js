@@ -27,6 +27,7 @@ import UserTable from './components/AdminNewV/Ui/UserTable';
 import AdminUsers from './components/AdminNewV/Pages/AdminUsers';
 import AdminTasks from './components/AdminNewV/Pages/AdminTasks';
 import UserInformation from './components/Users/Pages/UserInformation';
+import Vacations from '../src/components/Users/Pages/Vacations';
 import { checkAuth, loginPageRedirect } from './components/Users/Events/auth';
 import { getUserData } from './components/Users/Events/getMainData';
 import {
@@ -80,6 +81,11 @@ function App(props) {
         {
           path: 'tasks',
           element: <TasksUser userData={userData} />,
+          loader: checkAuth,
+        },
+        {
+          path: 'vacations',
+          element: <Vacations userData={userData} />,
           loader: checkAuth,
         },
 
