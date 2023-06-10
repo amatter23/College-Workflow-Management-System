@@ -1,8 +1,8 @@
 import { redirect } from 'react-router-dom';
 
 import { getAuthToken } from './auth';
-export const api_url = 'https://tms-production.up.railway.app'; // API URL
-const auth = 'Bearer ' + getAuthToken();
+export const api_url = 'https://vacation-production.up.railway.app'; // API URL
+const auth = 'JWT ' + getAuthToken();
 
 // det user data
 export function getUserData() {
@@ -303,3 +303,4 @@ export function deleteTaskAdmin(taskId) {
     return { data };
   });
 }
+
