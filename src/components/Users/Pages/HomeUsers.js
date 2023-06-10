@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import classes from './Home.module.css';
 import UserCard from '../Ui/UserCard';
 import TaskTaple from '../Ui/TaskTaple';
+import HeightLevelVecationTaple from '../Ui/HeightLevelVecationTaple';
+import LowLevelVacationsTaple from '../Ui/LowLevelVacationsTaple';
 import ActionCard from '../Ui/ActionCard';
 import AddTask from '../Ui/AddTask';
 import NavBar from '../Ui/NavBar';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const HomeUsers = props => {
   const [userData, updateUserData] = useState(props.userData);
   //accion card show by role
@@ -38,7 +42,7 @@ const HomeUsers = props => {
           <ActionCard ac={3}></ActionCard>
         </>
       );
-    } else if (userData.role === 'dr' || userData.role === 'ta') {
+    } else if (userData.role === 'doctor' || userData.role === 'assistant') {
       return (
         <>
           <ActionCard ac={1}></ActionCard>
@@ -56,6 +60,7 @@ const HomeUsers = props => {
 
   return (
     <div className={classes.contaner}>
+      <ToastContainer />
       <div
         style={{ display: addTask ? 'flex' : 'none' }}
         className={classes.addUser_Contaner}
@@ -75,11 +80,15 @@ const HomeUsers = props => {
           searchView={0}
           userData={userData}
         ></TaskTaple>
-        <TaskTaple
-          addTaskView={false}
-          searchView={0}
-          userData={userData}
-        ></TaskTaple>
+        {userData.role === 'dean' ||
+        userData.role === 'head' ||
+        userData.role === 'vice' ? (
+          <HeightLevelVecationTaple
+            userData={userData}
+          ></HeightLevelVecationTaple>
+        ) : (
+          <LowLevelVacationsTaple userData={userData}></LowLevelVacationsTaple>
+        )}
       </div>
     </div>
   );
