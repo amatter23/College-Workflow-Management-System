@@ -129,6 +129,16 @@ const NavBar = props => {
                     Tasks
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink
+                    to='/vacations'
+                    className={({ isActive }) =>
+                      isActive ? classes.active : null
+                    }
+                  >
+                    Vacations
+                  </NavLink>
+                </li>
                 {/* <li>Vacations</li> */}
               </ul>
             </div>
