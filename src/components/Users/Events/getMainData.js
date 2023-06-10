@@ -330,3 +330,27 @@ export function getVacationsApply() {
     });
 }
 
+// add new vacation
+export function addNewVacation(
+  vacationStartDate,
+  vacationEndDate,
+  vacationType
+) {
+  return fetch(api_url + '/vacationapply/', {
+    method: 'POST',
+    body: JSON.stringify({
+      start_date: vacationStartDate,
+      end_date: vacationEndDate,
+      leave_type: vacationType,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+      Authorization: auth,
+    },
+  }).then(response => {
+    return response.ok;
+  });
+}
+
+
+
