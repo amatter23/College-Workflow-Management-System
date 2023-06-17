@@ -57,7 +57,8 @@ const Actions = props => {
       event.target.date.value,
       taskData.status,
       taskData.receivers.id,
-      event.target.title.value
+      event.target.title.value,
+      event.target.description.value
     )
       .then(data => {
         setTaskData(data);
@@ -118,7 +119,12 @@ const Actions = props => {
                 <label htmlFor=''>Description</label>
                 <input id='description' type='text' />
                 <label htmlFor=''>File</label>
-                <input onChange={getFileData} id='file' name='myFile' type='file' />
+                <input
+                  onChange={getFileData}
+                  id='file'
+                  name='myFile'
+                  type='file'
+                />
                 <button>Add Response</button>
               </div>
             ) : (
@@ -137,6 +143,12 @@ const Actions = props => {
           <form onSubmit={updateTaskDetails} className={classes.editTask}>
             <label htmlFor=''>Title</label>
             <input type='text' id='title' defaultValue={taskData.title} />
+            <label htmlFor=''>Description</label>
+            <input
+              type='text'
+              id='description'
+              defaultValue={taskData.description}
+            />
             <label htmlFor='date'>Due Date</label>
             <input id='date' defaultValue={taskData.deadline} type='Date' />
             <button>Edit</button>
