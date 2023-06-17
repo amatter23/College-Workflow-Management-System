@@ -28,6 +28,7 @@ import AdminUsers from './components/AdminNewV/Pages/AdminUsers';
 import AdminTasks from './components/AdminNewV/Pages/AdminTasks';
 import UserInformation from './components/Users/Pages/UserInformation';
 import Vacations from '../src/components/Users/Pages/Vacations';
+import SecretaryVacation from './components/Users/Pages/SecretaryVacation';
 import { checkAuth, loginPageRedirect } from './components/Users/Events/auth';
 import { getUserData } from './components/Users/Events/getMainData';
 import {
@@ -36,8 +37,18 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import VacationPage from './components/Users/Ui/VacationPage';
-
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import enTranslation from './locales/en.json';
 function App(props) {
+  i18n.use(initReactI18next).init({
+    resources: {
+      en: { translation: enTranslation },
+    },
+    lng: 'en',
+    fallbackLng: 'en',
+    interpolation: { escapeValue: false },
+  });
   const [data, updateDate] = useState(AdminDate);
   const [isLoading, setIsLoading] = useState(true);
   // Initial fetch of data
@@ -124,7 +135,36 @@ function App(props) {
           path: `/VacationPage`,
           element: <VacationPage />,
           loader: checkAuth,
-        }
+        },
+      ],
+    },
+  ]);
+  const routerSecretary = createBrowserRouter([
+    {
+      path: '/',
+      element: <UserRoute userData={userData} />,
+      children: [
+        {
+          path: '/',
+          element: <SecretaryVacation userData={userData} />,
+          loader: checkAuth,
+        },
+
+        {
+          path: '/auth',
+          element: <Login />,
+          loader: loginPageRedirect,
+        },
+        {
+          path: `/UserAccount`,
+          element: <UserInformation userData={userData} />,
+          loader: checkAuth,
+        },
+        {
+          path: `/VacationPage`,
+          element: <VacationPage />,
+          loader: checkAuth,
+        },
       ],
     },
   ]);
@@ -148,7 +188,6 @@ function App(props) {
           element: <Login />,
           loader: loginPageRedirect,
         },
-        
       ],
     },
   ]);
@@ -158,6 +197,8 @@ function App(props) {
         <h1>loading</h1>
       ) : userData.staff === undefined ? (
         <RouterProvider router={routerAdmin} />
+      ) : userData.staff.role === 'secretary' ? (
+        <RouterProvider router={routerSecretary} />
       ) : (
         <RouterProvider router={routerUser} />
       )}
