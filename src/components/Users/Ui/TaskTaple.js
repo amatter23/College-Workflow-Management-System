@@ -266,12 +266,17 @@ const TaskTaple = props => {
               </button>
             </div>
           </div>
-          <div
-            style={{ display: addTaskView ? 'flex' : 'none' }}
-            className={classes.btnAddTask}
-          >
-            <NavLink to='/addTask'>Add Task</NavLink>
-          </div>
+          {/* filltred by role to show add task */}
+          {userData.role === 'doctor' || userData.role === 'assistant' ? (
+            ''
+          ) : (
+            <div
+              style={{ display: addTaskView ? 'flex' : 'none' }}
+              className={classes.btnAddTask}
+            >
+              <NavLink to='/addTask'>Add Task</NavLink>
+            </div>
+          )}
 
           {searchView === 1 ? (
             <div className={classes.search}>
@@ -336,6 +341,7 @@ const TaskTaple = props => {
                     key={taskfiller.id}
                     className={classes.tapleBodyItem}
                   >
+                    
                     <div className={classes.item}>{taskfiller.title}</div>
                     <div className={classes.item}>
                       <UserLogo
@@ -345,7 +351,10 @@ const TaskTaple = props => {
                             : taskfiller.staff.role
                         }
                       ></UserLogo>
-                      {taskfiller.receivers.user}
+                      {taskOrder === '/sent-tasks'
+                        ? taskfiller.receivers.user
+                        : taskfiller.staff.user}
+                      {/* {taskfiller.staff.user} */}
                     </div>
                     <div className={classes.item}>
                       {' '}
@@ -363,6 +372,7 @@ const TaskTaple = props => {
                         </div>
                       )
                     }
+                   
                   </div>
                 </div>
               ))

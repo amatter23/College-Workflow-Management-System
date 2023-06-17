@@ -58,6 +58,8 @@ const TaskDetailsTest = props => {
   // edit task
   const editTask = async event => {
     event.preventDefault();
+    const id = toast.loading('Please wait...');
+
     try {
       const response = await updateTask(
         taskId,
@@ -65,17 +67,18 @@ const TaskDetailsTest = props => {
         false,
         taskData.receivers.id
       );
-      toast.success('Task Updated', {
-        position: toast.POSITION.TOP_LEFT,
+      toast.update(id, {
+        render: 'All is good',
+        type: 'success',
+        isLoading: false,
       });
     } catch (error) {
-      toast.error('API request failed!', {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
+      toast.update(id, { render: 'Error', type: 'error', isLoading: false });
     }
   };
   // done task
   const doneTask = async event => {
+    const id = toast.loading('Please wait...');
     try {
       const response = await updateTask(
         taskId,
@@ -83,17 +86,17 @@ const TaskDetailsTest = props => {
         true,
         taskData.receivers.id
       );
-      toast.success('Task Done', {
-        position: toast.POSITION.TOP_LEFT,
+      toast.update(id, {
+        render: 'All is good',
+        type: 'success',
+        isLoading: false,
       });
     } catch (error) {
-      toast.error('Try again later', {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
+      toast.update(id, { render: 'Error', type: 'error', isLoading: false });
     }
     setTimeout(() => {
       window.location.reload();
-    }, 5000);
+    }, 1000);
   };
   const [file, setFile] = useState(null);
   const getFileData = e => {
@@ -108,15 +111,17 @@ const TaskDetailsTest = props => {
     form_data.append('title', event.target[0].value);
     form_data.append('description', event.target[1].value);
     form_data.append('task', taskId);
+    const id = toast.loading('Please wait...');
+
     try {
       const response = await addResponsee(form_data);
-      toast.success('Task Done', {
-        position: toast.POSITION.TOP_LEFT,
+      toast.update(id, {
+        render: 'All is good',
+        type: 'success',
+        isLoading: false,
       });
     } catch (error) {
-      toast.error('Try again later', {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
+      toast.update(id, { render: 'Error', type: 'error', isLoading: false });
     }
   };
   // function to retarive componant by task order and task response
@@ -202,11 +207,7 @@ const TaskDetailsTest = props => {
                 <div className={classes.item}>
                   <label htmlFor=''>Attachment </label>
                   {/* <input value={taskData.file} type='file' /> */}
-                  <a
-                    className={classes.dowBtn}
-                    href={taskData.file}
-                    
-                  >
+                  <a className={classes.dowBtn} href={taskData.file}>
                     Download{' '}
                     <FontAwesomeIcon
                       onClick={props.openAddTaskModal}
@@ -224,7 +225,7 @@ const TaskDetailsTest = props => {
                     </div>
                   </div>
                   <div className={classes.item}>
-                    <label htmlFor=''>Resever</label>
+                    <label htmlFor=''>Receiver</label>
                     <div className={classes.name}>
                       <UserLogo role={taskData.receivers.role} />
                       <h3>{taskData.receivers.user}</h3>
@@ -303,11 +304,7 @@ const TaskDetailsTest = props => {
                         Attachment
                       </label>
                       {/* <input value={taskData.file} type='file' /> */}
-                      <a
-                        className={classes.dowBtn}
-                        href={taskData.file}
-                        
-                      >
+                      <a className={classes.dowBtn} href={taskData.file}>
                         Download
                         <FontAwesomeIcon
                           onClick={props.openAddTaskModal}
@@ -375,11 +372,7 @@ const TaskDetailsTest = props => {
                 <div className={classes.item}>
                   <label htmlFor=''>Attachment </label>
                   {/* <input value={taskData.file} type='file' /> */}
-                  <a
-                    className={classes.dowBtn}
-                    href={taskData.file}
-                    
-                  >
+                  <a className={classes.dowBtn} href={taskData.file}>
                     Download
                     <FontAwesomeIcon
                       onClick={props.openAddTaskModal}
@@ -462,7 +455,7 @@ const TaskDetailsTest = props => {
                         </span>{' '}
                         Title
                       </label>
-                      <input id='title' type='text' />
+                      <input autoFocus id='title' type='text' />
                     </div>
                     <div className={classes.taskResDes}>
                       <label htmlFor='description'>
@@ -475,12 +468,7 @@ const TaskDetailsTest = props => {
                         </span>{' '}
                         Description
                       </label>
-                      <textarea
-                        autoFocus
-                        id='description'
-                        cols='30'
-                        rows='10'
-                      ></textarea>
+                      <textarea id='description' cols='30' rows='10'></textarea>
                     </div>
                     <div className={classes.bottomn}>
                       <div
@@ -563,7 +551,7 @@ const TaskDetailsTest = props => {
                 <div className={classes.item}>
                   <label htmlFor=''>Attachment </label>
                   {/* <input value={taskData.file} type='file' /> */}
-                  <a className={classes.dowBtn} href={taskData.file} >
+                  <a className={classes.dowBtn} href={taskData.file}>
                     Download
                     <FontAwesomeIcon
                       onClick={props.openAddTaskModal}
@@ -581,7 +569,7 @@ const TaskDetailsTest = props => {
                     </div>
                   </div>
                   <div className={classes.item}>
-                    <label htmlFor=''>Resever</label>
+                    <label htmlFor=''>Receiver</label>
                     <div className={classes.name}>
                       <UserLogo role={taskData.receivers.role} />
                       <h3>{taskData.receivers.user}</h3>
@@ -668,7 +656,6 @@ const TaskDetailsTest = props => {
                       <a
                         className={classes.dowBtn}
                         href={taskData.task_response.file}
-                        
                       >
                         Download
                         <FontAwesomeIcon
@@ -754,7 +741,7 @@ const TaskDetailsTest = props => {
                     </div>
                   </div>
                   <div className={classes.item}>
-                    <label htmlFor=''>Resever</label>
+                    <label htmlFor=''>Receiver</label>
                     <div className={classes.name}>
                       <UserLogo role={taskData.receivers.role} />
                       <h3>{taskData.receivers.user}</h3>
