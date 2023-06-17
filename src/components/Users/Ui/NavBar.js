@@ -90,6 +90,64 @@ const NavBar = props => {
         </div>
       </div>
     );
+  } else if (props.userData.role === 'secretary') {
+    return (
+      <div id='nav' className={classes.contaner}>
+        <div className={classes.nav}>
+          <div className={classes.left}>
+            <div className={classes.home}>
+              <FontAwesomeIcon
+                icon={faBriefcase}
+                className={`${classes.icon}`}
+              />
+              <div className={classes.title}>
+                <h1>Work Flow</h1>
+                <h1 className={classes.h1D}>Management</h1>
+              </div>
+            </div>
+            <div className={classes.list}>
+              <ul>
+                <li>
+                  <NavLink
+                    to='/'
+                    className={({ isActive }) =>
+                      isActive ? classes.active : null
+                    }
+                    end
+                  >
+                    Accepted Vacations
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className={classes.right}>
+            {localStorage.getItem('token') ? (
+              <>
+                <div className={classes.name}>
+                  <UserLogo role={props.userData.role} />
+                  <div>
+                    <h1>
+                      {`${props.userData.full_name}`.charAt(0).toUpperCase() +
+                        `${props.userData.full_name}`.slice(1)}
+                    </h1>
+                    <h2>
+                      {`${props.userData.role}`.charAt(0).toUpperCase() +
+                        `${props.userData.role}`.slice(1)}
+                    </h2>
+                  </div>
+                </div>
+                <FontAwesomeIcon
+                  onClick={logoutBut}
+                  icon={faArrowRightFromBracket}
+                  className={`${classes.icon}`}
+                />
+              </>
+            ) : null}
+          </div>
+        </div>
+      </div>
+    );
   } else {
     return (
       <div id='nav' className={classes.contaner}>

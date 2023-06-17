@@ -352,8 +352,6 @@ export function addNewVacation(
   });
 }
 
-
-
 // accept or refuse vacation
 
 export function acceptOrRefuseVacation(vacationId, vacationStatus) {
@@ -369,4 +367,18 @@ export function acceptOrRefuseVacation(vacationId, vacationStatus) {
   }).then(response => {
     return response.ok;
   });
+}
+
+// view vacation secrtart
+
+export function SecretaryVacations() {
+  return fetch(api_url + '/acceptedleaves/', {
+    headers: {
+      Authorization: auth,
+    },
+  })
+    .then(response => response.json())
+    .then(data => {
+      return data;
+    });
 }
