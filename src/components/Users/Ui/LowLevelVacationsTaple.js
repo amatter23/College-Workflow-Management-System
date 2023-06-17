@@ -77,25 +77,17 @@ const LowLevelVacationsTaple = props => {
     fetchData();
   }, []);
 
-  // search for task by title
-  // state to determine if search view is open or not (0/1)
-  // const [searchView, updateSearchView] = useState(props.searchView);
-  // const searchTask = event => {
-  //   const searchValue = event.target.value;
-  //   searchTasks(taskOrder, searchValue, taskStatus).then(data => {
-  //     updateTasks(data.results);
-  //   });
-  // };
 
   const [addTaskView, updateAddTaskView] = useState(props.addTaskView);
   // open task details window on click on task
   const navigate = useNavigate();
-  // const openTaskWindow = event => {
-  //   event.preventDefault();
-  //   navigate('/TaskDetails', {
-  //     state: { taskOrder: `${taskOrder}`, taskId: `${event.currentTarget.id}` },
-  //   });
-  // };
+  const openVacationWindow = vacations => {
+    console.log(vacations);
+
+    navigate('/VacationPage', {
+      state: { vacation: vacations },
+    });
+  };
 
   const options = [
     { value: 'Ordinary', label: 'Ordinary' },
@@ -284,7 +276,11 @@ const LowLevelVacationsTaple = props => {
                 .map(vacation => (
                   <div
                     id={vacation.id}
-                    // onClick={openTaskWindow}
+                    onClick={
+                      vacation.status === 'Accepted'
+                        ? () => openVacationWindow(vacation)
+                        : null
+                    }
                     key={vacation.id}
                     className={classes.tapleBodyItemContaner}
                   >
