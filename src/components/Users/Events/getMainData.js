@@ -90,16 +90,17 @@ export function updateTask(
   taskDeadline,
   taskStatus,
   taskReceiver,
-  taskTitle
+  taskTitle,
+  taskDescribtion
 ) {
   return fetch(api_url + '/sent-tasks/' + taskId + '/', {
     method: 'PUT',
     body: JSON.stringify({
       deadline: taskDeadline,
-      file: null,
       status: taskStatus,
       receivers: taskReceiver,
       title: taskTitle,
+      description: taskDescribtion,
     }),
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
