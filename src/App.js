@@ -35,6 +35,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from 'react-router-dom';
+import VacationPage from './components/Users/Ui/VacationPage';
 
 function App(props) {
   const [data, updateDate] = useState(AdminDate);
@@ -119,6 +120,11 @@ function App(props) {
           element: <Actions userData={userData} />,
           loader: checkAuth,
         },
+        {
+          path: `/VacationPage`,
+          element: <VacationPage />,
+          loader: checkAuth,
+        }
       ],
     },
   ]);
