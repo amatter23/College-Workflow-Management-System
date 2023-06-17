@@ -6,9 +6,10 @@ import React, { useState, useEffect } from 'react';
 
 import { Component } from 'react';
 import Select from 'react-select';
-
+import UserLogo from './UserLogo';
 import classes from './AddTask.module.css';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTrash,
@@ -34,8 +35,10 @@ const AddTask = props => {
   const [task, setTask] = useState([]);
   const [receivers, setReceivers] = useState([]);
 
+  // const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     getReceivers().then(res => {
+      console.log(res);
       setReceivers(res);
     });
   }, []);
@@ -45,9 +48,9 @@ const AddTask = props => {
   // add a new route function
 
   const addNewTask = async event => {
+    const id = toast.loading('Please wait...');
     event.preventDefault();
     let uploadedFile = document.getElementById('file').files[0];
-    console.log(uploadedFile);
     var form_data = new FormData();
     form_data.append('file', uploadedFile);
     form_data.append('title', event.target[0].value);
@@ -56,12 +59,25 @@ const AddTask = props => {
     form_data.append('receivers', event.target[4].value);
     try {
       const response = await createTask(form_data);
-    } catch (error) {}
-
-    navigate('/tasks');
+      toast.update(id, {
+        render: 'All is good',
+        type: 'success',
+        isLoading: false,
+      });
+    } catch (error) {
+      toast.update(id, {
+        render: 'Something went wrong!',
+        type: 'error',
+        isLoading: false,
+      });
+    }
+    setTimeout(() => {
+      navigate('/tasks');
+    }, 1000);
   };
   return (
     <div className={classes.contaner}>
+      <ToastContainer />
       <div className={classes.back}>
         <div className={classes.form}>
           <div className={classes.header}>
@@ -116,7 +132,7 @@ const AddTask = props => {
                 <select htmlFor='receivers' id='receivers'>
                   {receivers.map(post => (
                     <option key={post.id} value={post.id}>
-                      {post.user}
+                      <UserLogo role={post.role}></UserLogo> {post.user}
                     </option>
                   ))}
                 </select>
