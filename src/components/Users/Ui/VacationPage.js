@@ -3,11 +3,17 @@ import { useLocation /* other hooks */ } from 'react-router-dom';
 
 import classes from './VacationPage.module.css';
 import o6u from '../../../../src/components/Users/media/O6U_Logo.jpg';
-import ReactToPrint from 'react-to-print';
+import Signature from '../../../../src/components/Users/media/Signature.png';
+import Signature2 from '../../../../src/components/Users/media/Signature2.png';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareCheck, faSquare } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from 'react-i18next';
+
 const VacationPage = () => {
   const location = useLocation();
+  const { t } = useTranslation();
+
   console.log(location.state.vacation);
   const [type, setType] = useState(() => {
     if (location.state.vacation.leave_type === 'Sick') return 'مرضي';
@@ -83,19 +89,19 @@ const VacationPage = () => {
       <div className={classes.information}>
         <div className={classes.filed}>
           <h1>: وظيفة </h1>
-          <h2>{vacation.sender_role} </h2>
+          <h2 style={{width:"50%", textAlign:"center"}} >{t(`${vacation.sender_role}`)} </h2>
         </div>
         <div className={classes.filed}>
           <h1> :مقدمه لسيادتكم </h1>
-          <h2>{vacation.sender_name}</h2>
+          <h2 style={{width:"50%", textAlign:"center"}}>{vacation.sender_name}</h2>
         </div>
         <div className={classes.filed}>
           <h1> : قسم </h1>
-          <h2>{vacation.sender_department} </h2>
+          <h2 style={{width:"50%", textAlign:"center"}}>{t(`${vacation.sender_department}`)} </h2>
         </div>
         <div className={classes.filed}>
           <h1> :كلية </h1>
-          <h2>{vacation.sender_college} </h2>
+          <h2 >{t(`${vacation.sender_college}`)} </h2>
         </div>
       </div>
       <div className={classes.taple}>
@@ -159,7 +165,7 @@ const VacationPage = () => {
         </div>
         <div className={classes.filed}>
           <h1> التوقيع </h1>
-          <h2 style={{ width: '50%', height: '30%' }}></h2>
+          <img style={{ width: '80px' }} src={Signature2} alt='' />
         </div>
       </div>
       <div className={classes.no}>
@@ -178,11 +184,11 @@ const VacationPage = () => {
       <div className={classes.names}>
         <div>
           <h1>-:رئيس القسم</h1>
-          <h3>{vacation.reciever_department}</h3>
+          <h3>{vacation.reciever_from_same_department}</h3>
         </div>
         <div>
           <h1> -:عميد الكلية</h1>
-          <h3>{vacation.dean}</h3>
+          <img style={{ width: '40px' }} src={Signature} alt='' />
         </div>
       </div>
       <button
