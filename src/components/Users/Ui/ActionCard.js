@@ -24,7 +24,7 @@ const ActionCard = props => {
       btn: 'Add Now',
       color: 2,
       fun: () => {
-        navigate('/tasks', {});
+        navigate('/vacations', {});
       },
     },
     {
@@ -33,7 +33,7 @@ const ActionCard = props => {
       btn: 'Take a action',
       color: 3,
       fun: () => {
-        navigate('/tasks', {});
+        navigate('/vacations', {});
       },
     },
     {
@@ -43,7 +43,7 @@ const ActionCard = props => {
       color: 4,
       fun: function () {
         navigate('/Actions', {
-          state: { action: "addResponse" }
+          state: { action: 'addResponse' },
         });
       },
     },
@@ -54,7 +54,7 @@ const ActionCard = props => {
       color: 1,
       fun: function () {
         navigate('/Actions', {
-          state: { action: "editTask" }
+          state: { action: 'editTask' },
         });
       },
     },
@@ -65,7 +65,7 @@ const ActionCard = props => {
       color: 2,
       fun: () => {
         navigate('/Actions', {
-          state: { action: "deleteTask" }
+          state: { action: 'deleteTask' },
         });
       },
     },
