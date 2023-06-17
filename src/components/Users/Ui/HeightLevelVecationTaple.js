@@ -31,16 +31,24 @@ const HeightLevelVecationTaple = props => {
   const [vacations, updateVacations] = useState([]);
 
   const vacationAction = async (id, action, event) => {
-    console.log(id, action);
+    const idd = toast.loading('Please wait...');
     try {
       const response = await acceptOrRefuseVacation(id, action).then(data => {
         if (data === true) {
-          toast.success('Action was successful');
+          toast.update(idd, {
+            render: 'All is good',
+            type: 'success',
+            isLoading: false,
+          });
           setTimeout(() => {
             window.location.reload();
           }, 1000);
         } else {
-          toast.error('Try again later');
+          toast.update(idd, {
+            render: 'Something went wrong!',
+            type: 'error',
+            isLoading: false,
+          });
         }
         setIsLoading(false);
       });
@@ -120,7 +128,7 @@ const HeightLevelVecationTaple = props => {
           <div className={classes.tapleBodyContaner}>
             {vacations.length === 0 ? (
               <h1 className={classes.emptyTasks}>
-                Sorry no tasks available
+                Sorry no vacations available
                 <FontAwesomeIcon
                   className={classes.iconeError}
                   icon={faTriangleExclamation}

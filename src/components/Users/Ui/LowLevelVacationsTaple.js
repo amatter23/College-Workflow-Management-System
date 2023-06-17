@@ -77,7 +77,6 @@ const LowLevelVacationsTaple = props => {
     fetchData();
   }, []);
 
-
   const [addTaskView, updateAddTaskView] = useState(props.addTaskView);
   // open task details window on click on task
   const navigate = useNavigate();
@@ -104,6 +103,8 @@ const LowLevelVacationsTaple = props => {
       event.target.startDate.value,
       event.target.endDate.value
     );
+    const id = toast.loading('Please wait...');
+
     try {
       const response = await addNewVacation(
         event.target.startDate.value,
@@ -111,9 +112,20 @@ const LowLevelVacationsTaple = props => {
         selectedOption.value
       ).then(data => {
         if (data === true) {
-          window.location.reload();
+          toast.update(id, {
+            render: 'All is good',
+            type: 'success',
+            isLoading: false,
+          });
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
         } else {
-          toast.error('Check your dates');
+          toast.update(id, {
+            render: 'Something went wrong!',
+            type: 'error',
+            isLoading: false,
+          });
         }
         setIsLoading(false);
       });
@@ -146,6 +158,7 @@ const LowLevelVacationsTaple = props => {
 
   return (
     <div className={classes.contaner}>
+      <ToastContainer />
       <div className={classes.haeder}>
         <div className={`${classes.haederItem} ${classes.title} `}>
           <FontAwesomeIcon
