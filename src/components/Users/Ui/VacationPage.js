@@ -134,14 +134,14 @@ const VacationPage = () => {
                 </div>
               </div>
               <div>
-                <h1>إمجالي الرصيد</h1>
+                <h1>إجمالي الرصيد</h1>
                 <h3></h3>
               </div>
             </div>
           </div>
           <div className={classes.time}>
             <div>
-              <h1>إمجالي األجازة</h1>
+              <h1>إجمالي الاجازه</h1>
               <h3>{vacation.num_days}</h3>
             </div>
             <div>
@@ -169,7 +169,7 @@ const VacationPage = () => {
         </div>
       </div>
       <div className={classes.no}>
-        <h1>توقيع القائم بعمل جدول الدراسة يف هذه املدة بدالً من سيادته .</h1>
+        <h1>توقيع القائم بعمل جدول الدراسة في هذه المده بدلا من  سيادته </h1>
         <div className={classes.tttt}>
           <div>
             <h1>الاسم</h1>
