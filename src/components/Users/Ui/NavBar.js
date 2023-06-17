@@ -21,10 +21,9 @@ const NavBar = props => {
   };
 
   console.log(props.userData);
-  const test = '01';
   if (props.userData.staff === undefined) {
     return (
-      <div className={classes.contaner}>
+      <div id='nav' className={classes.contaner}>
         <div className={classes.nav}>
           <div className={classes.left}>
             <div className={classes.home}>
@@ -93,7 +92,7 @@ const NavBar = props => {
     );
   } else {
     return (
-      <div className={classes.contaner}>
+      <div id='nav' className={classes.contaner}>
         <div className={classes.nav}>
           <div className={classes.left}>
             <div className={classes.home}>
