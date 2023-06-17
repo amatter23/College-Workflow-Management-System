@@ -204,7 +204,7 @@ const TaskDetailsTest = props => {
                   {/* <input value={taskData.file} type='file' /> */}
                   <a
                     className={classes.dowBtn}
-                    href={api_url + taskData.file}
+                    href={taskData.file}
                     
                   >
                     Download{' '}
@@ -377,7 +377,7 @@ const TaskDetailsTest = props => {
                   {/* <input value={taskData.file} type='file' /> */}
                   <a
                     className={classes.dowBtn}
-                    href={api_url + taskData.file}
+                    href={taskData.file}
                     
                   >
                     Download
