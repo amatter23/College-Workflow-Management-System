@@ -37,10 +37,9 @@ CWMS's core objectives encapsulate:
 - Managing user accounts effectively, with the added provision of a System Administrator role.
 
 ## Screenshot
-
+**Dashboard**
 ![CWMS Interface](./screenshots/image1.png)
-![CWMS Interface](./screenshots/image2.png)
-![CWMS Interface](./screenshots/image3.png)
+**Task View**
 ![CWMS Interface](./screenshots/image4.png)
 
 ## Installation and Setup
