@@ -36,6 +36,10 @@ CWMS's core objectives encapsulate:
 - Enhancing task visibility with real-time notifications.
 - Managing user accounts effectively, with the added provision of a System Administrator role.
 
+## Screenshot
+
+![CWMS Interface](./screenshots/image1.png)
+
 ## Installation and Setup
 
 1. Clone this front-end repository: `git clone [https://github.com/amatter23/College-Workflow-Manager]`.
