@@ -39,6 +39,9 @@ CWMS's core objectives encapsulate:
 ## Screenshot
 
 ![CWMS Interface](./screenshots/image1.png)
+![CWMS Interface](./screenshots/image2.png)
+![CWMS Interface](./screenshots/image3.png)
+![CWMS Interface](./screenshots/image4.png)
 
 ## Installation and Setup
 
